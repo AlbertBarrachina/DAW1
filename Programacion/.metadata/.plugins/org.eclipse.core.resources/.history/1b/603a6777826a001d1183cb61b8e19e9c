@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class numericos {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		int opc =0;
+		int pasos = 0;
+		for (int n = 0; n < 1;) {
+			System.out.println(
+					"1) Opción 1. Crea un array de 10 enteros, el llenado con números impares aleatorios generados por el ordenador. \n"
+							+ " 2) Opción 2. Calcula cuál es el valor más grande y cuántas veces aparece.\n "
+							+ "3) Opción 3. Guarde dentro de una matriz.\r\n "
+							+ "4) Opción 9. Salir del programa.");
+			opc =teclado.nextInt();
+			if (opc==1) {
+				
+			}else if (opc==2) {
+				if (pasos =1) {
+					
+				}else
+					System.out.println("primero deves hacer la opcion 1");
+			}else if (opc==3) {
+				
+			}else if (opc==4) {
+				
+			}else if (opc==9) {
+				
+			}else
+				System.out.println("Pon un numero correcto");
+		}
+	}
+}

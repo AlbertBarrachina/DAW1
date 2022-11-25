@@ -1,0 +1,96 @@
+import java.util.Scanner;
+import java.util.Vector;
+
+public class Ejercicio_Arrays {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		int[] B = new int[0];
+		int Bb = 0;
+		int tempmax = 0;
+		int tempmin = 100;
+		double tempmed = 0;
+		int tempper = 0;
+		int[] num = new int[100];
+		int i = 0;
+		int ii = 0;
+		int n = 0;
+		int x = 0;
+		int ejercicio = 0;
+		int repetir = 0;
+
+		while (repetir == 0) {
+			System.out.println("Que ejercicio quieres ejecutar? (1-11)");
+			ejercicio = teclado.nextInt();
+
+			if (ejercicio == 1) {
+				// enunciado 1
+				i = 0;
+				System.out.println("Enunciado 1 (numeros aleatorios)\n\n\n");
+				System.out.println("Pon un numero del 0 al 100");
+				n = teclado.nextInt();
+				while (i < 100) {
+					num[i] = (int) (Math.random() * 101);
+					if (num[i] == n) {
+						x++;
+					}
+					i++;
+				}
+				System.out.println("Has acertado " + x + " veces.");
+			} else if (ejercicio == 2) {
+				// enunciado 2
+				ii = 0;
+				Bb = 0;
+				System.out.println("\n\n\n\n Enunciado 2 (temperaturas)\n\n\n");
+				System.out.println("Cuantos registros quieres poner?");
+				n = teclado.nextInt();
+				System.out.println("Introducelos");
+				B = new int[n];
+				while (ii < n) {
+					B[ii] = teclado.nextInt();
+					if (B[ii] > tempmax) {
+						tempmax = B[ii];
+					}
+					if (B[ii] < tempmin) {
+						tempmin = B[ii];
+					}
+					tempmed = tempmed + B[ii];
+					ii++;
+				}
+				tempmed = tempmed / n;
+				while (Bb < n) {
+					if (B[Bb] >= tempmed) {
+						tempper++;
+					}
+					Bb++;
+				}
+
+				System.out.println("Temperatura maxima = " + tempmax + ".");
+				System.out.println("Temperatura minima = " + tempmin + ".");
+				System.out.println("Temperatura media aproximada = " + tempmed + " .");
+				System.out.println("Porcentaje de temperaturas por encima de la media = " + tempper * (100 / n) + "%.");
+			} else if (ejercicio == 3) {
+
+			} else if (ejercicio == 4) {
+
+			} else if (ejercicio == 5) {
+
+			} else if (ejercicio == 6) {
+
+			} else if (ejercicio == 7) {
+
+			} else if (ejercicio == 8) {
+
+			} else if (ejercicio == 9) {
+
+			} else if (ejercicio == 10) {
+
+			} else if (ejercicio == 11) {
+
+			} else {
+				System.out.println("Elije un numero \n\n");
+			}
+		}
+	}
+
+}

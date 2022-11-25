@@ -1,0 +1,72 @@
+import java.util.Scanner;
+
+public class buscaminas1 {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		int[][] tb = new int[10][10];
+		int[][] minas = new int[10][10];
+		int i = 0;
+		int j = 0;
+		int f = 0;
+		int c = 0;
+		int repe = 0;
+
+		// genera las minas en un tablero a parte llamado "minas"
+		do {
+			for (i = 0; i < 10; i++) {
+				for (j = 0; j < 10; j++) {
+					tb[i][j] = 0;
+					minas[i][j] = 0;
+					if ((int) (Math.random() * 10) == 6)
+						minas[i][j] = 1;
+				}
+			}
+		} while (repe == 1);
+		// muestra el tablero "tb" al jugador
+		System.out.println("\n\n\n\n |---------------------------------------|");
+		for (i = 0; i < 10; i++) {
+			for (j = 0; j < 10; j++) {
+				System.out.print(" | " + tb[i][j]);
+			}
+			if (i < 9)
+				System.out.print(" | \n |---+---+---+---+---+---+---+---+---+---|\n");
+			else
+				System.out.print(" | \n |---------------------------------------| \n\n");
+		}
+		// -------------------------------------
+		for (i = 0; i < 1;) {
+			System.out.println("Introduce la fila 1-10");
+			f = teclado.nextInt();
+			f--;
+			if (f < 0 || f > 9) {
+				System.out.println("pon un numero valido");
+			} else
+				i++;
+			System.out.println("Introduce la columna 1-10");
+			c = teclado.nextInt();
+			c--;
+			if (c < 0 || c > 9) {
+				System.out.println("pon un numero valido");
+			} else
+				i++;
+			if (minas[f][c] == 0) {
+				tb[f][c] = 2;
+			} else {
+				tb[f][c] = 3;
+				System.out.println("Has perdido!");
+			}
+			System.out.println("\n |---------------------------------------|");
+			for (i = 0; i < 10; i++) {
+				for (j = 0; j < 10; j++) {
+					System.out.print(" | " + tb[i][j]);
+				}
+				if (i < 9)
+					System.out.print(" | \n |---+---+---+---+---+---+---+---+---+---|\n");
+				else
+					System.out.print(" | \n |---------------------------------------| \n\n");
+			}
+		}
+		teclado.close();
+	}
+}

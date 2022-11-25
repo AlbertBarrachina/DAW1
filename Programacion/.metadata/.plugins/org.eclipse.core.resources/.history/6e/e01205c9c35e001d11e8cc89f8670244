@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class nacionalidades {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String str = "";
+		int n = 0;
+		int nacion = 0;
+		int repe = 0;
+
+		System.out.println("¿Cuantos nombres quieres insertar?");
+
+		n = teclado.nextInt();
+		teclado.nextLine();
+
+		System.out.println("Entra el nombre:");
+		str = teclado.nextLine();
+		if (str.substring(str.length() - 2, str.length()).equals("IX")) {
+			nacion = 1;
+			repe++;
+		} else if (str.substring(str.length() - 2, str.length()).equals("US")
+				|| (str.substring(str.length() - 2, str.length()).equals("UM"))) {
+			nacion = 2;
+			repe++;
+		} else if (str.substring(str.length() - 2, str.length()).equals("AF")) {
+			nacion = 3;
+			repe++;
+		} else if (str.substring(str.length() - 2, str.length()).equals("IS")
+				|| str.substring(str.length() - 2, str.length()).equals("OS")
+				|| str.substring(str.length() - 2, str.length()).equals("AX")) {
+			nacion = 4;
+			repe++;
+		} else if (str.substring(str.length() - 2, str.length()).equals("EZ")) {
+			nacion = 5;
+			repe++;
+		} else if (str.substring(str.length() - 1, str.length()).equals("A")) {
+			nacion = 6;
+			repe++;
+		}else if (str.substring(0, 3).equals("MAC")) {
+			nacion = 7;
+			repe++;
+		}else if (str.substring(0, 3).equals("PRO")) {
+			nacion = 8;
+			repe++;
+		}
+		
+	}
+
+}

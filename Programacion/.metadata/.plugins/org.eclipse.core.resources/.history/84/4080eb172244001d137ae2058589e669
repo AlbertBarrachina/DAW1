@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class testing {
+
+	public static void main(String[] args) {
+		// variables
+		int uno = 0;// uno es el nombre para try catch
+		int i = 0;
+		int ronda = 1;
+		int apuestaj = 0;
+		int cantidadj = 0;
+		int puntosj = 0;
+		int cantidadm = 0;
+		int apuestam = 0;
+		int puntosm = 0;
+		int repeat = 0;
+		Scanner teclado = new Scanner(System.in);
+		// input
+
+		while (uno == 0) {
+			System.out.println("Bienvenidos al Juego de las tres piedras.");
+			System.out.println("¿Cuántas rondas queréis jugar?");
+			try {
+				i = Integer.parseInt(teclado.nextLine());
+
+				if (i > 0) {
+					uno = 1;
+				} else {
+					uno = 0;
+				}
+			} catch (Exception e) {
+				System.out.println("Eso no es un numero.");
+				uno = 0;
+			}
+		}
+		while (i > 0) {
+			cantidadm = (int) (Math.random() * 4);
+			apuestam = (int) (Math.random() * 7 +cantidadm);
+			System.out.println(cantidadm);
+			System.out.println(apuestam);
+			System.out.println("----------------------");
+			i--;
+		}
+	}
+}

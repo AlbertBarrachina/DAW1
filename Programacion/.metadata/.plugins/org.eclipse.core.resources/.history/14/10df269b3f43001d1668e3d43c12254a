@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class juego_chinos {
+
+	public static void main(String[] args) {
+		// variables
+		int uno = 0;// uno es el nombre para try catch
+		int i = 0;
+		int ronda = 1;
+		int piedraj = 3;
+		int apuestaj = 0;
+		int cantidadj = 0;
+		int piedram = 3;
+		int apuestam = 0;
+		int cantidadm = 0;
+		Scanner teclado = new Scanner(System.in);
+		// input
+		System.out.println("Bienvenidos al Juego de las tres piedras.");
+		System.out.println("¿Cuántas rondas queréis jugar?");
+		while (uno == 0) {
+			try {
+				i = Integer.parseInt(teclado.nextLine());
+				uno = 1;
+			} catch (Exception e) {
+				System.out.println("Pon un numero de rondas.");
+				uno = 0;
+			}
+		}
+		while (i > ronda - 1) {
+			System.out.println("Inicio ronda " + ronda + ".");
+			while (uno == 2) {
+				try {
+					System.out.println("Jugador: apuesta?");
+					cantidadj = Integer.parseInt(teclado.nextLine());
+					uno = 3;
+				} catch (Exception e) {
+					System.out.println("No tienes esa cantidad de piedras.");
+					uno = 2;
+				}
+			}
+			while (uno == 4) {
+				try {
+					System.out.println("Jugador: ¿Cuántas?");
+					apuestaj = Integer.parseInt(teclado.nextLine());
+					uno = 5;
+				} catch (Exception e) {
+					System.out.println("pon una cantidad entre 0 y 6.");
+					uno = 4;
+				}
+			}
+			ronda++;
+		}
+		// operaciones
+		// output
+		teclado.close();
+	}
+
+}

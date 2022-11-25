@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+public class juego {
+
+	public static void main(String[] args) {
+		// variables
+		int canicasj = 10;
+		int apuestaj = 0;
+		int numj = 0;
+		int canicasm = 10;
+		int numm = 0;
+		int i = 1;
+		int canicasmenor = 0;
+		int suma = 0;
+		Scanner teclado = new Scanner(System.in);
+		// input
+		System.out.println("Hola jugador, bienvenido al juego de las canicas");
+		while (canicasj > 0 || canicasm > 0) {
+			System.out.println("RONDA " + i);
+			do {
+				System.out.println("¿Cual es tu apuesta?(Introduce un numero)");
+				System.out.println("1.Par");
+				System.out.println("2.Impar");
+				apuestaj = teclado.nextInt();
+			} while (apuestaj > 2 || apuestaj < 1);
+
+			do {
+				if (apuestaj == 1) {
+					System.out.println("Has elegido: Par ¿cuantas canicas quieres apostar?");
+				}
+				if (apuestaj == 2) {
+					System.out.println("Has elegido: Impar ¿cuantas canicas quieres apostar?");
+				}
+				System.out.println("tienes " + canicasj + " canicas.");
+				numm = (int) (Math.random() * canicasm + 1);
+				numj = teclado.nextInt();
+			} while (numj < 0 || numj > canicasj);
+			// operaciones
+			canicasmenor = numm;
+			if (numj < numm) {
+				canicasmenor = numj;
+			}
+			suma = numj + numm;
+			System.out.println(suma);
+			if (suma % 2 == 0) {
+				if (apuestaj == 1) {
+					canicasm = canicasm - canicasmenor;
+					canicasj = canicasj + canicasmenor;
+				} else {
+					canicasj = canicasj - canicasmenor;
+					canicasm = canicasm + canicasmenor;
+				}
+
+			}
+			if (suma % 2 != 0) {
+				if (apuestaj == 2) {
+					canicasm = canicasm - canicasmenor;
+					canicasj = canicasj + canicasmenor;
+			} else {
+				canicasj = canicasj - canicasmenor;
+				canicasm = canicasm + canicasmenor;
+			}
+
+			i++;
+		}
+		// output
+		System.out.println("Fin del juego");
+		if (canicasm == 0) {
+			System.out.println("Has ganado.");
+		}
+		if (canicasj == 0) {
+			System.out.println("Has perdido.");
+		}
+	}
+
+}

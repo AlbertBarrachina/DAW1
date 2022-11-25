@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class numero {
+
+	public static void main(String[] args) {
+		//Programa que demani N números (N donat per l’usuari) i calculi el menor i major d’ells.
+		//variables
+		int Nnumeros;
+		int i;
+		Scanner teclado=new Scanner(System.in);
+		
+		//input
+		System.out.println("¿Cuantos numeros quieres pedir?");
+		Nnumeros=teclado.nextInt();
+		
+		//operaciones
+		for(i = -1; i< Nnumeros; i++){
+			System.out.println("introduce los numeros");
+			Nnumeros=teclado.nextInt();
+		}
+		//output
+		
+		
+		
+		
+		
+		
+	}
+
+}

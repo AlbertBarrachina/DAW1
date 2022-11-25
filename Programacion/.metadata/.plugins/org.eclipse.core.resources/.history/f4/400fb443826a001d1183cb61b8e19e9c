@@ -1,0 +1,14 @@
+
+public class numericos {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.out.println(
+				"1) Opción 1. Crea un array de 10 enteros, el llenado con números impares aleatorios generados por el ordenador. El rango de los números generados irá de 9 a 31. Muestra todos los números generados por pantalla.\n"
+						+ " 2) Opción 2. Calcula cuál es el valor más grande y cuántas veces aparece. Muestra los resultados por pantalla.\n "
+						+ "3) Opción 3. Guarde dentro de una matriz de 2x5 llamada mat3 el vector que haya generado en el apartado 1) y lo muestre por pantalla.\r\n "
+						+ "4) Opción 9. Salir del programa.");
+	}
+
+}

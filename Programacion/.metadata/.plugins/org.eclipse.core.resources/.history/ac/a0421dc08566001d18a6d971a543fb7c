@@ -1,0 +1,577 @@
+package dacaho;
+
+import java.util.Scanner;
+
+public class tikTakTok {
+
+	public static void main(String[] args) {
+		
+		//Variables
+		int j;
+		int i;
+		int fila;
+		int columna;
+		int tipoPartida;
+		int rondas;
+		int empezarPartida;
+		String volverJugar = "s";
+		boolean ganaJugador1;
+		boolean ganaJugador2;
+		boolean J1; 
+		boolean J2;
+	
+		//Escaner 
+		Scanner scan = new Scanner(System.in);
+		
+		//Se jugara siempre que vovlerJugar = 'S'
+		while(volverJugar.equalsIgnoreCase("s") ) {
+			
+			int[][] tablero = new int[3][3];
+			
+			//Reseteamos rondas
+			rondas = 0;
+			
+			//Elegimos si queremos Jugar con 2 Jugadores o contra la ia
+			do {
+				System.out.println("1 Jugador='1' || 2 Jugadores='2'");
+				System.out.print("Jugadores:");
+				tipoPartida = scan.nextInt();
+				
+			}while(tipoPartida < 1 || tipoPartida > 2);
+			
+				
+				//Jugador vs IA(Inteligencia artificial)
+				while(tipoPartida == 1) {
+					
+					ganaJugador1 = false;
+					ganaJugador2 = false;
+					empezarPartida = (int)(Math.random()*2+1);
+					
+					while(ganaJugador1 == false && ganaJugador2 == false) {
+						
+						J1 = false;
+						J2 = false;
+						rondas++;
+						
+						if(empezarPartida == 1) {
+							
+							//Jugador 1
+							
+							//Pedir fila y columna
+							do {
+								System.out.println("Jugador1");
+	
+								do {	
+									System.out.print("Dime la fila:");
+									fila = scan.nextInt();
+								}while(fila <1 || fila > 3);
+								
+								
+								do {
+									System.out.print("Dime la columna:");
+									columna = scan.nextInt();
+								}while(columna <1 || columna > 3);	
+							
+								
+								if(tablero[fila-1][(columna-1)] != 0) {
+									System.out.println("La casilla ya ha sido marcada.");
+								}else {
+									tablero[fila-1][columna-1] = 1;
+									J1 = true;
+								}
+							
+							}while(J1 == false);
+							
+							//Mostrar tablero
+							for(j = 0; j <3; j++) {
+								for(i = 0; i < 3; i++) {
+									System.out.print(tablero[j][i]+" ");
+								}
+								System.out.println();
+							}
+							
+						//Comprobar si jugador 1 ha ganado
+						
+								if(//Horizontales
+								   (tablero[0][0] == 1 && tablero [0][1] == 1 && tablero[0][2]==1) ||
+								   (tablero[1][0] == 1 && tablero [1][1] == 1 && tablero[1][2]==1) ||
+								   (tablero[2][0] == 1 && tablero [2][1] == 1 && tablero[2][2]==1) ||
+								   //Verticales
+								   (tablero[0][0] == 1 && tablero [1][0] == 1 && tablero[2][0]==1) ||
+								   (tablero[0][1] == 1 && tablero [1][1] == 1 && tablero[2][1]==1) ||
+								   (tablero[0][2] == 1 && tablero [1][2] == 1 && tablero[2][2]==1) ||
+								   //Diagonales
+								   (tablero[0][0] == 1 && tablero [1][1] == 1 && tablero[2][2]==1) ||
+								   (tablero[0][2] == 1 && tablero [1][1] == 1 && tablero[2][0]==1)) {
+									
+									ganaJugador1 = true;
+								
+								}
+								
+						//Eleccion IA
+							if(ganaJugador1 == false) {
+								while(J2 == false) {
+									
+									//Ronda 1
+									if(rondas == 1 && tablero[1][1] == 0) {
+										tablero[1][1] = 2;
+										J2 = true;
+									}
+									if(rondas == 1 && tablero[1][1] == 1) {
+										tablero [0][0] = 2;
+										J2 = true;
+									}
+									
+									//Ronda 2
+									if(rondas == 2) {
+										
+										  //Centro Jugador
+										  if(tablero[1][1]== 1) {
+											  
+											  //Aristas
+											  
+											  if(tablero[0][2] == 1){
+												  tablero[2][0] = 2;
+												  J2 = true;
+											  }
+											  if(tablero[2][2] == 1){
+												  tablero[2][0] = 2;
+												  J2 = true;
+											  }
+											  if( tablero[2][0] == 1){
+												  tablero[0][2] = 2;
+												  J2 = true;
+											  }
+											  
+											  //Vertices
+											  
+											  if(tablero[0][1] == 1){
+												  tablero[2][1] = 2;
+												  J2 = true;
+											  }
+											  if(tablero[2][1] == 1){
+												  tablero[0][1] = 2;
+												  J2 = true;
+											  }
+											  if(tablero[1][0] == 1){
+												  tablero[1][2] = 2;
+												  J2 = true;
+											  }
+											  if(tablero[1][2] == 1){
+												  tablero[1][0] = 2;
+												  J2 = true;
+											  }
+										  }
+										  //Centro IA
+										  if(tablero[1][1]==2) {
+											  //Verticales
+											  	//Vertical 1 
+											  	if(tablero[0][0]== 1 &&
+											  	   tablero[0][1] == 1) {
+											  		
+												   tablero[0][2] = 2;
+												   J2 = true;
+											  	}
+											  	if(tablero[0][0]== 1 &&
+											  	   tablero[0][2] == 1) {
+											  		
+											  		tablero[0][1] = 2;
+											  		J2 = true;
+											  	}
+											  	if(tablero[0][1] == 1 &&
+											  	   tablero[0][2] == 1) {
+											  		
+											  		tablero[0][0] = 2;
+											  		J2 = true;
+											  	}
+											  	//Vertical 2
+											  	if(tablero[2][0]== 1 &&
+												   tablero[2][1] == 1) {
+													  		
+													tablero[2][2] = 2;
+													J2 = true;
+												}
+												if(tablero[2][0]== 1 &&
+												   tablero[2][2] == 1) {
+													  		
+													tablero[0][1] = 2;
+													J2 = true;
+												}
+												if(tablero[2][1] == 1 &&
+												   tablero[2][2] == 1) {
+													  		
+													 tablero[2][0] = 2;
+													 J2 = true;
+												}
+											//Horizontales
+												//Horizontal 1
+												if(tablero[0][0]== 1 &&
+												   tablero[1][0]== 1) {
+													
+													tablero[2][0] = 2;
+													J2 = true;
+												}
+												if(tablero[2][0]== 1 &&
+												   tablero[1][0]== 1) {
+													
+													tablero[0][0] = 2;
+													J2 = true;
+												}
+												if(tablero[0][0]== 1 &&
+												   tablero[2][0]== 1) {
+													
+													tablero[1][0]= 2;
+													J2 = true;
+												}
+												//Horizontal 2
+												if(tablero[0][2]== 1 &&
+												   tablero[1][2]== 1) {
+															
+													tablero[2][2] = 2;
+													J2 = true;
+												}
+												if(tablero[2][2]== 1 &&
+												   tablero[1][2]== 1) {
+															
+												    tablero[0][2] = 2;
+													J2 = true;
+												}
+												if(tablero[0][2]== 1 &&
+												   tablero[2][2]== 1) {
+															
+													tablero[1][2]= 2;
+													J2 = true;
+												}
+												
+											//Diagoneales
+												//Diagonal 1
+												if(tablero[0][0] == 1 &&
+												   tablero[2][2] == 1) {
+													
+													tablero[1][0] = 2;
+													J2 = true;
+												}
+												//Diagonal 2
+												if(tablero[2][0] == 1 &&
+												   tablero[2][0] == 1) {
+													
+													tablero[1][0] = 2;
+													J2 = true;
+												}
+										  }
+									}
+									
+									//Ronda 3
+									if(rondas == 3) {
+										//Centro Jugador
+										if(tablero[1][1] == 1) {
+											//Posicion anterior IA
+												//Aristas
+												if() {
+												
+												}
+										}
+										//Centro IA
+										if(tablero[1][1] == 2) {
+											
+										}
+										
+									}
+									
+									
+								}
+							}
+							
+						}else {
+							
+						}
+						
+						
+					}
+					
+				}
+				
+				//Jugador vs Jugador
+				while(tipoPartida == 2) {
+					
+					ganaJugador1 = false;
+					ganaJugador2 = false;
+					empezarPartida = (int)(Math.random()*2+1);
+					
+					
+					while(ganaJugador1 == false && ganaJugador2 == false) {
+						
+						J1 = false;
+						J2 = false;
+						rondas++;
+						System.out.println("Ronda "+ rondas);
+						
+						if(empezarPartida == 1) {
+						//Jugador 1
+						
+							//Pedir fila y columna
+							do {
+								System.out.println("Jugador1");
+	
+								do {	
+									System.out.print("Dime la fila:");
+									fila = scan.nextInt();
+								}while(fila <1 || fila > 3);
+								
+								
+								do {
+									System.out.print("Dime la columna:");
+									columna = scan.nextInt();
+								}while(columna <1 || columna > 3);	
+							
+								
+								if(tablero[fila-1][(columna-1)] != 0) {
+									System.out.println("La casilla ya ha sido marcada.");
+								}else {
+									tablero[fila-1][columna-1] = 1;
+									J1 = true;
+								}
+							
+							}while(J1 == false);
+							
+							//Mostrar tablero
+							for(j = 0; j <3; j++) {
+								for(i = 0; i < 3; i++) {
+									System.out.print(tablero[j][i]+" ");
+								}
+								System.out.println();
+							}
+							
+						//Comprobar si jugador 1 ha ganado
+						
+								if(//Horizontales
+								   (tablero[0][0] == 1 && tablero [0][1] == 1 && tablero[0][2]==1) ||
+								   (tablero[1][0] == 1 && tablero [1][1] == 1 && tablero[1][2]==1) ||
+								   (tablero[2][0] == 1 && tablero [2][1] == 1 && tablero[2][2]==1) ||
+								   //Verticales
+								   (tablero[0][0] == 1 && tablero [1][0] == 1 && tablero[2][0]==1) ||
+								   (tablero[0][1] == 1 && tablero [1][1] == 1 && tablero[2][1]==1) ||
+								   (tablero[0][2] == 1 && tablero [1][2] == 1 && tablero[2][2]==1) ||
+								   //Diagonales
+								   (tablero[0][0] == 1 && tablero [1][1] == 1 && tablero[2][2]==1) ||
+								   (tablero[0][2] == 1 && tablero [1][1] == 1 && tablero[2][0]==1)) {
+									
+									ganaJugador1 = true;
+								
+								}	
+							
+						//Jugador 2
+							//Pedir fila y columna
+							if(ganaJugador1 == false) {
+								do {
+								System.out.println("Jugador2");
+								
+								do {
+									System.out.print("Dime la fila:");
+									fila = scan.nextInt();}
+								while(fila <1 || fila > 3);	
+								
+									
+								do {
+									System.out.print("Dime la columna:");
+									columna = scan.nextInt();
+									}while(columna <1 || columna > 3);	
+							
+								if(tablero[fila-1][columna-1] != 0) {
+									System.out.println("La casilla ya ha sido marcada.");
+								}else {
+									tablero[fila-1][columna-1] = 2;
+									J2 = true;
+								}
+							
+							}while(J2 == false );
+							
+							//Mostrar tablero
+							for(j = 0; j <3; j++) {
+								for(i = 0; i < 3; i++) {
+									System.out.print(tablero[j][i]+" ");
+								}
+								System.out.println();
+							}
+							
+								
+								
+								//Comprobar si Jugador 2 ha ganado
+								if(//Horizontales
+									(tablero[0][0] == 2 && tablero [0][1] == 2 && tablero[0][2]==2) ||
+									(tablero[1][0] == 2 && tablero [1][1] == 2 && tablero[1][2]==2) ||
+									(tablero[2][0] == 2 && tablero [2][1] == 2 && tablero[2][2]==2) ||
+									//Verticales
+									(tablero[0][0] == 2 && tablero [1][0] == 2 && tablero[2][0]==2) ||
+									(tablero[0][1] == 2 && tablero [1][1] == 2 && tablero[2][1]==2) ||
+									(tablero[0][2] == 2 && tablero [1][2] == 2 && tablero[2][2]==2) ||
+									//Diagonales
+									(tablero[0][0] == 2 && tablero [1][1] == 2 && tablero[2][2]==2) ||
+									(tablero[0][2] == 2 && tablero [1][1] == 2 && tablero[2][0]==2)) {
+									
+										ganaJugador2 = true;
+									
+								}
+							}
+							
+							
+							
+						}else {
+							
+							
+							
+							
+						//Jugador 2
+							//Pedir fila y columna
+							
+								do {
+								System.out.println("Jugador2");
+								
+								do {
+									System.out.print("Dime la fila:");
+									fila = scan.nextInt();}
+								while(fila <1 || fila > 3);	
+								
+									
+								do {
+									System.out.print("Dime la columna:");
+									columna = scan.nextInt();
+									}while(columna <1 || columna > 3);	
+							
+								if(tablero[fila-1][columna-1] != 0) {
+									System.out.println("La casilla ya ha sido marcada.");
+								}else {
+									tablero[fila-1][columna-1] = 2;
+									J2 = true;
+								}
+							
+							}while(J2 == false );
+							
+							//Mostrar tablero
+							for(j = 0; j <3; j++) {
+								for(i = 0; i < 3; i++) {
+									System.out.print(tablero[j][i]+" ");
+								}
+								System.out.println();
+							}
+							
+								
+								
+								//Comprobar si Jugador 2 ha ganado
+								if(//Horizontales
+									(tablero[0][0] == 2 && tablero [0][1] == 2 && tablero[0][2]==2) ||
+									(tablero[1][0] == 2 && tablero [1][1] == 2 && tablero[1][2]==2) ||
+									(tablero[2][0] == 2 && tablero [2][1] == 2 && tablero[2][2]==2) ||
+									//Verticales
+									(tablero[0][0] == 2 && tablero [1][0] == 2 && tablero[2][0]==2) ||
+									(tablero[0][1] == 2 && tablero [1][1] == 2 && tablero[2][1]==2) ||
+									(tablero[0][2] == 2 && tablero [1][2] == 2 && tablero[2][2]==2) ||
+									//Diagonales
+									(tablero[0][0] == 2 && tablero [1][1] == 2 && tablero[2][2]==2) ||
+									(tablero[0][2] == 2 && tablero [1][1] == 2 && tablero[2][0]==2)) {
+									
+										ganaJugador2 = true;
+									
+								}
+								
+								if(ganaJugador2 == false) {
+									
+							//Jugador 1
+							
+							//Pedir fila y columna
+							do {
+								System.out.println("Jugador1");
+	
+								do {	
+									System.out.print("Dime la fila:");
+									fila = scan.nextInt();
+								}while(fila <1 || fila > 3);
+								
+								
+								do {
+									System.out.print("Dime la columna:");
+									columna = scan.nextInt();
+								}while(columna <1 || columna > 3);	
+							
+								
+								if(tablero[fila-1][(columna-1)] != 0) {
+									System.out.println("La casilla ya ha sido marcada.");
+								}else {
+									tablero[fila-1][columna-1] = 1;
+									J1 = true;
+								}
+							
+							}while(J1 == false);
+							
+							//Mostrar tablero
+							for(j = 0; j <3; j++) {
+								for(i = 0; i < 3; i++) {
+									System.out.print(tablero[j][i]+" ");
+								}
+								System.out.println();
+							}
+							
+						//Comprobar si jugador 1 ha ganado
+						
+								if(//Horizontales
+								   (tablero[0][0] == 1 && tablero [0][1] == 1 && tablero[0][2]==1) ||
+								   (tablero[1][0] == 1 && tablero [1][1] == 1 && tablero[1][2]==1) ||
+								   (tablero[2][0] == 1 && tablero [2][1] == 1 && tablero[2][2]==1) ||
+								   //Verticales
+								   (tablero[0][0] == 1 && tablero [1][0] == 1 && tablero[2][0]==1) ||
+								   (tablero[0][1] == 1 && tablero [1][1] == 1 && tablero[2][1]==1) ||
+								   (tablero[0][2] == 1 && tablero [1][2] == 1 && tablero[2][2]==1) ||
+								   //Diagonales
+								   (tablero[0][0] == 1 && tablero [1][1] == 1 && tablero[2][2]==1) ||
+								   (tablero[0][2] == 1 && tablero [1][1] == 1 && tablero[2][0]==1)) {
+									
+									ganaJugador1 = true;
+								
+								}	
+								}
+							
+						
+						}
+						
+						
+							
+								
+								//Comprobar empate
+								if(rondas == 9 && ganaJugador1 == false && ganaJugador2 == false) {
+									
+									ganaJugador1 = true;
+									ganaJugador2 = true;
+								}
+						
+					}
+					
+					//Mostrar quien ha ganado
+					if(ganaJugador1 == true && ganaJugador2 == false) {
+						System.out.println("Gana Jugador 1!!");
+					}
+					
+					if(ganaJugador2 == true && ganaJugador1 == false) {
+						System.out.println("Gana Jugador 2!!");
+					}
+					if(ganaJugador1 == true && ganaJugador2 == true) {
+						System.out.println("Empate!!");
+					}
+					
+					
+					
+					tipoPartida = 3;  
+					
+				}
+				
+				while(tipoPartida == 3) {
+					System.out.print("¿Quieres volver a jugar(s/n)?");
+					volverJugar = scan.next();
+					tipoPartida = 0;
+				}
+		}
+		
+		
+		
+	}
+
+}

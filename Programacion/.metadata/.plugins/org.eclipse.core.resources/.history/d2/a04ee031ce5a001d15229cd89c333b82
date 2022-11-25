@@ -1,0 +1,52 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class matriz_letras {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		char[][] mat = new char[10][10];
+		boolean repetir = true;
+		String randoms= "ABCDEFGHIJ";
+		int key = 0;
+		int op = 0;
+		int n = 0;
+		int i = 0;
+		Random r = new Random();
+		while (repetir) {
+			System.out.println("1.-Crear matriz.");
+			System.out.println("2.-Mostrar matriz.");
+			System.out.println("3.-Mostrar vocal mas repetida.");
+			System.out.println("4.-Cuantas consonantes hay en la diagonal de la matriz.");
+			System.out.println("9.-Sali del programa.");
+			op = teclado.nextInt();
+			if (op == 1) {
+				for (i = 0; i < 9; i++) {
+					for (n = 0; n < 9; n++) {
+						mat[i][n] = (randoms.charAt(r.nextInt(randoms.length())));
+					}
+				}
+				key = 1;
+
+			} else if (op == 2 && key == 1) {
+				for (i = 0; i < 9; i++) {
+					for (n = 0; n < 9; n++) {
+						System.out.print(mat[i][n] + "  ");
+					}
+					System.out.println();
+				}
+			} else if (op == 3 && key == 1) {
+
+			} else if (op == 4 && key == 1) {
+
+			} else if (op == 9) {
+				System.out.println("Saliendo de la aplicacion.");
+				repetir = false;
+			} else if (op == 2 || op == 3 || op == 4 && key == 0) {
+				System.out.println("Primero tienes que generar las letras.");
+			} else
+				System.out.println("Pon un numero correcto.");
+		}
+	}
+
+}

@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class learning_machine {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String A = "";
+		String B = "";
+		String temp = "";
+		int n = 0;
+
+		for (int i = 0; i == 0;) {
+			System.out.println("introduce el primer string");
+			A = teclado.nextLine();
+			if (A.length() <= 80 && A.substring(A.length() - 1).equals("#")) {
+				i = 1;
+			} else
+				System.out.println("Pon una string con longitud max 80 char y con # al final.");
+		}
+		for (int k = 0; k == 0;) {
+			System.out.println("introduce el segundo string");
+			B = teclado.nextLine();
+			if (B.length() <= 25 && B.substring(B.length() - 1).equals("#")) {
+				k = 1;
+			} else
+				System.out.println("Pon una string con longitud max 25 char y con # al final.");
+		}
+		for (int j = 0; j < B.length() - 1; j++) {
+			n = 0;
+			for (int l = 0; l < A.length() - 1; l++) {
+				if (B.substring(j,j+1).equals(A.substring(l,l+1))) {
+					n++;
+				}
+			}
+			System.out.println(B.substring(j,j+1) +"->" + n);
+		}
+		teclado.close();
+	}
+
+}

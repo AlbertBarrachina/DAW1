@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+public class buscaminas1 {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		int[][] tb = new int[10][10];
+		int[][] minas = new int[10][10];
+		int i = 0;
+		int j = 0;
+		int f = 0;
+		int c = 0;
+		int redo = 1;
+		int cont = 0;
+
+		// genera las minas en un tablero a parte llamado "minas"
+		do {
+			for (i = 0; i < 10; i++) {
+				for (j = 0; j < 10; j++) {
+					if ((int) (Math.random() * 10) == 6) {
+						minas[i][j] = 1;
+						cont++;
+					}
+				}
+			}
+			// muestra el tablero "tb" al jugador
+			System.out.println("\n\n\n\n |---------------------------------------|");
+			for (i = 0; i < 10; i++) {
+				for (j = 0; j < 10; j++) {
+					System.out.print(" | " + tb[i][j]);
+				}
+				if (i < 9)
+					System.out.print(" | \n |---+---+---+---+---+---+---+---+---+---|\n");
+				else
+					System.out.print(" | \n |---------------------------------------| \n\n");
+			}
+			// pregunta por las filas y columnas y luego comprueba si es mina, no mina o ya
+			// has descartado la casilla
+			for (int n = 0; n < 1;) {
+				System.out.println("Dime la fila 1-10 :");
+				f = teclado.nextInt();
+				f--;
+				if (f < 0 || f > 9) {
+					System.out.println("Pon un numero valido");
+				} else {
+					System.out.println("Dime la columna 1-10 :");
+					c = teclado.nextInt();
+					c--;
+					if (c < 0 || c > 9) {
+						System.out.println("Pon un numero valido");
+						//comprueba que nohayas seleccionado la mina aun y suma 1 al contador para poder ganar
+					} else if (tb[f][c] == 0) {
+						if (minas[f][c] == 0) {
+							tb[f][c] = 2;
+							cont++;
+							System.out.println("No es bomba");
+							//al llegar a 100 has ganado
+							if (cont == 100) {
+								System.out.println("¡Has ganado!");
+								n++;
+							}
+						} else {
+							tb[f][c] = 3;
+							System.out.println("¡Has perdido!");
+							n++;
+						}
+						System.out.println("\n |---------------------------------------|");
+						for (i = 0; i < 10; i++) {
+							for (j = 0; j < 10; j++) {
+								System.out.print(" | " + tb[i][j]);
+							}
+							if (i < 9)
+								System.out.print(" | \n |---+---+---+---+---+---+---+---+---+---|\n");
+							else
+								System.out.print(" | \n |---------------------------------------| \n\n");
+						}
+					} else if (tb[f][c] == 2) {
+						System.out.println("Coordenadas ya insertadas, pon unas coordenadas diferentes.");
+					}
+				}
+			}
+			System.out.println("¿Quieres volver a empezar? (0 para reintentar)");
+			redo = teclado.nextInt();
+		} while (redo == 0);
+		teclado.close();
+	}
+}

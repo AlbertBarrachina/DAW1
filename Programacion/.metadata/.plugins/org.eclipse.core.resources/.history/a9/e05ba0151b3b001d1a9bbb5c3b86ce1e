@@ -1,0 +1,53 @@
+import java.util.Scanner;
+public class numero {
+
+	public static void main(String[] args) {
+		//Programa que demani N números (N donat per l’usuari) i calculi el menor i major d’ells.
+		//variables
+		int Nnumeros;
+		int i;
+		int Nmenor=0;
+		int Nmayor=0;
+		Scanner teclado=new Scanner(System.in);
+		
+		//input
+		
+			//Nos pide una cantidad de numeros para que esta sea el numero de numeros que nos pedira mas tarde
+		System.out.println("¿Cuantos numeros quieres pedir?");
+		Nnumeros=teclado.nextInt("numero");
+		
+		//operaciones
+		
+			//Este if nos asegura que si se introduce cero o menos, saltara directamente al resultado
+		if(Nnumeros>0) {
+		System.out.println("Introduce los " + Nnumeros + " numeros.");
+		}
+		//El for hace de contador de los numeros inroducidos
+		for(i=0; i<Nnumeros; i++){
+			int Tmp=teclado.nextInt();
+				//El primer if hace que el primer numero introducido sea el menor
+			if	(i==0) {
+				Nmenor=Tmp;
+			}
+				//El segundo if hace que si el numero introducido es menor al anterior este pasa a ser el menor
+			else if (Tmp < Nmenor){
+			Nmenor=Tmp;
+			
+		}
+				//El tercer if hace que si el numero introducido es mayor al anterior este pasa a ser el mayor
+			if (Tmp > Nmayor){
+			Nmayor=Tmp;
+			}
+		}
+		
+		//output
+		
+		//Nos dice el menor y el mayor de la lista de numeros introducida
+		System.out.println("El numero mayor es el " + Nmayor +".");
+		System.out.println("El numero menor es el " + Nmenor +".");
+		
+		
+		
+	}
+
+}

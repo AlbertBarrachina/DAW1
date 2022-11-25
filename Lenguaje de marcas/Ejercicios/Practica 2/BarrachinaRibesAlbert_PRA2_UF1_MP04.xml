@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE medios[
+<!ELEMENT medios (medio_audio*|medio_video*|medio_texto*|medio_programa*)>
+<!ATTLIST medio_audio formato CDATA "dsc|cda|cst">
+<!ELEMENT medio_audio ((soporte_comprado|soporte_copiado|soporte_regalado), contenido_audio, indice)>
+<!ELEMENT contenido_audio (año, titulo, tipo_audio, interprete, estudio, pistas)>
+<!ELEMENT año (#PCDATA)>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT tipo_audio (#PCDATA)>
+<!ELEMENT interprete (#PCDATA)>
+<!ELEMENT estudio (#PCDATA)>
+<!ATTLIST pista numero CDATA #REQUIRED>
+<!ELEMENT pistas (pista+)>
+<!ATTLIST pista durada CDATA #REQUIRED>
+<!ELEMENT indice (#PCDATA)>
+<!ATTLIST medio_video formato CDATA "vhs|dvd|bry">
+<!ELEMENT medio_video ((soporte_comprado|soporte_copiado|soporte_regalado), contenido_video, indice)>
+<!ELEMENT contenido_video (año, titulo, tipo_video, director, actor, actriz, compositor, guionista, productor, secundarios, localizaciones, idiomas)>
+<!ELEMENT año (#PCDATA)>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT tipo_video (#PCDATA)>
+<!ELEMENT director (nombre, apellido1, apellido2?)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellido1 (#PCDATA)>
+<!ELEMENT apellido2 (#PCDATA)>
+<!ELEMENT actor (nombre, apellido1, apellido2?)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellido1 (#PCDATA)>
+<!ELEMENT apellido2 (#PCDATA)>
+<!ELEMENT actriz (nombre, apellido1, apellido2?)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellido1 (#PCDATA)>
+<!ELEMENT apellido2 (#PCDATA)>
+<!ELEMENT compositor (nombre, apellido1, apellido2?)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellido1 (#PCDATA)>
+<!ELEMENT apellido2 (#PCDATA)>
+<!ELEMENT guionista (nombre, apellido1, apellido2?)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellido1 (#PCDATA)>
+<!ELEMENT apellido2 (#PCDATA)>
+<!ELEMENT productor (nombre, apellido1, apellido2?)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellido1 (#PCDATA)>
+<!ELEMENT apellido2 (#PCDATA)>
+<!ELEMENT secundarios (secundario+)>
+<!ELEMENT secundario (nombre, apellido1, apellido2?)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellido1 (#PCDATA)>
+<!ELEMENT apellido2 (#PCDATA)>
+<!ELEMENT localizaciones (localizacion+)>
+<!ELEMENT localizacion (#PCDATA)>
+<!ELEMENT idiomas (idioma+)>
+<!ELEMENT idioma (#PCDATA)>
+<!ATTLIST idioma original CDATA "si|no">
+<!ELEMENT indice (#PCDATA)>
+<!ATTLIST medio_texto formato CDATA "libro|revista">
+<!ELEMENT medio_texto ((soporte_comprado|soporte_copiado|soporte_regalado), contenido_texto, indice)>
+<!ELEMENT contenido_texto (año, ttitulo, editorial, edicion, ciudad, contenido_libro, indice)>
+<!ELEMENT año (#PCDATA)>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT editorial (#PCDATA)>
+<!ELEMENT edicion (#PCDATA)>
+<!ELEMENT ciudad (#PCDATA)>
+<!ELEMENT contenido_libro (tipo_libro, coleccion, idioma, traductor, autores)>
+<!ELEMENT tipo_libro (#PCDATA)>
+<!ELEMENT coleccion (#PCDATA)>
+<!ATTLIST coleccion numero CDATA "">
+<!ATTLIST idioma original CDATA "si|no">
+<!ELEMENT traductor (nombre, apellido1, apellido2?)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellido1 (#PCDATA)>
+<!ELEMENT apellido2 (#PCDATA)>
+<!ELEMENT autores (autor+)>
+<!ELEMENT autor (nombre, apellido1, apellido2?)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellido1 (#PCDATA)>
+<!ELEMENT apellido2 (#PCDATA)>
+<!ATTLIST medio_video formato CDATA "dsk|dcp|dvp">
+<!ELEMENT medio_programa ((soporte_comprado|soporte_copiado|soporte_regalado), contenido_programa, indice)>
+<!ELEMENT contenido_programa (año, titulo, tipo_programa, empresa, version)>
+<!ELEMENT año (#PCDATA)>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT tipo_programa (#PCDATA)>
+<!ELEMENT empresa (#PCDATA)>
+<!ELEMENT version (#PCDATA)>
+<!ELEMENT indice (#PCDATA)>
+<!ATTLIST soporte_comprado version CDATA #FIXED "original">
+<!ELEMENT soporte_comprado (fecha, localidad, centro, precio)>
+<!ELEMENT fecha (dia, mes, año)>
+<!ELEMENT dia (#PCDATA)>
+<!ELEMENT mes (#PCDATA)>
+<!ELEMENT año (#PCDATA)>
+<!ELEMENT localidad (#PCDATA)>
+<!ELEMENT centro (#PCDATA)>
+<!ELEMENT precio (#PCDATA)>
+<!ATTLIST soporte_regalado version CDATA #FIXED "original|copiado">
+<!ELEMENT soporte_regalado (fecha, localidad, centro, precio)>
+<!ELEMENT fecha (dia, mes, año)>
+<!ELEMENT dia (#PCDATA)>
+<!ELEMENT mes (#PCDATA)>
+<!ELEMENT año (#PCDATA)>
+<!ELEMENT localidad (#PCDATA)>
+<!ELEMENT centro (#PCDATA)>
+<!ELEMENT precio (#PCDATA)>
+<!ATTLIST soporte_copiado version CDATA #FIXED "copiado">
+<!ELEMENT soporte_copiado (fecha)>
+<!ELEMENT fecha (dia, mes, año)>
+<!ELEMENT dia (#PCDATA)>
+<!ELEMENT mes (#PCDATA)>
+<!ELEMENT año (#PCDATA)>
+]>
+<medios>
+  <medio_audio formato="dsc">
+    <soporte_comprado version="original">
+      <fecha>
+        <dia>23</dia>
+        <mes>10</mes>
+        <año>2018</año>
+      </fecha>
+      <localidad>Lleida</localidad>
+      <centro>Mercado de Antigüedades</centro>
+      <precio>25</precio>
+    </soporte_comprado>
+    <contenido_audio>
+      <año>1980</año>
+      <titulo>Paris</titulo>
+      <tipo_audio>rock</tipo_audio>
+      <interprete>Supertramp</interprete>
+      <estudio>A &amp; M Recording Studios</estudio>
+      <pistas numero="2">
+        <pista durada="180">Take the Long Way Home</pista>
+        <pista durada="90">Breakfast in America</pista>
+      </pistas>
+    </contenido_audio>
+    <indice>M/AUD/DSC/ORG/00001</indice>
+  </medio_audio>
+  <medio_audio formato="cda">
+    <soporte_comprado version="original">
+      <fecha>
+        <dia>11</dia>
+        <mes>07</mes>
+        <año>2019</año>
+      </fecha>
+      <localidad>Lleida</localidad>
+      <centro>Camps Elisis</centro>
+      <precio>15</precio>
+    </soporte_comprado>
+    <contenido_audio>
+      <año>2018</año>
+      <titulo>Unity in Diversity</titulo>
+      <tipo_audio>reaggy</tipo_audio>
+      <interprete>Koers</interprete>
+      <estudio>El Tercero Studios</estudio>
+      <pistas numero="2">
+        <pista durada="240">Our Song</pista>
+        <pista durada="180">Poor Intentions</pista>
+      </pistas>
+    </contenido_audio>
+    <indice>M/AUD/CDA/ORG/00002</indice>
+  </medio_audio>
+  <medio_audio formato="cda">
+    <soporte_regalado version="copia">
+      <fecha>
+        <dia>01</dia>
+        <mes>02</mes>
+        <año>2017</año>
+      </fecha>
+      <persona>
+        <nombre>Marta</nombre>
+        <apellido1>Lopez</apellido1>
+        <apellido2>Sans</apellido2>
+      </persona>
+    </soporte_regalado>
+    <contenido_audio>
+      <año>2014</año>
+      <titulo>Terral</titulo>
+      <tipo_audio>pop</tipo_audio>
+      <interprete>Pablo Alboran</interprete>
+      <estudio>Parlophone</estudio>
+      <pistas numero="2">
+        <pista durada="100">Por Fin</pista>
+        <pista durada="150">La Escalera</pista>
+      </pistas>
+    </contenido_audio>
+    <indice>M/AUD/CDA/CPY/00003</indice>
+  </medio_audio>
+  <medio_video formato="dvd">
+    <soporte_comprado version="original">
+      <fecha>
+        <dia>22</dia>
+        <mes>11</mes>
+        <año>2018</año>
+      </fecha>
+      <localidad>Lleida</localidad>
+      <centro>Mercado de Antigüedades</centro>
+      <precio>20</precio>
+    </soporte_comprado>
+    <cotenido_video>
+      <año>1990</año>
+      <titulo>Regreso al Futuro III</titulo>
+      <tipo_video>ciencia-ficcion</tipo_video>
+      <director>
+        <nombre>Robert</nombre>
+        <apellido1>Zemeckis</apellido1>
+      </director>
+      <actor>
+        <nombre>Michael J.</nombre>
+        <apellido1>Fox</apellido1>
+      </actor>
+      <actriz>
+        <nombre>Mary</nombre>
+        <apellido1>Steenburgen</apellido1>
+      </actriz>
+      <compositor>
+        <nombre>Alan</nombre>
+        <apellido1>Silvestri</apellido1>
+      </compositor>
+      <guionista>
+        <nombre>Robert</nombre>
+        <apellido1>Zemeckis</apellido1>
+      </guionista>
+      <productor>
+        <nombre>Neil</nombre>
+        <apellido1>Canton</apellido1>
+      </productor>
+      <secundarios>
+        <secundario>
+          <nombre>Christopher</nombre>
+          <apellido1>Lloyd</apellido1>
+        </secundario>
+      </secundarios>
+      <localizaciones>
+        <localizacion>Los Angeles</localizacion>
+      </localizaciones>
+      <idiomas>
+        <idioma original="si">Inglés</idioma>
+        <idioma original="no">Castellano</idioma>
+      </idiomas>
+    </cotenido_video>
+    <indice>M/VID/DVD/ORG/00001</indice>
+  </medio_video>
+  <medio_video formato="dvd">
+    <soporte_regalado version="original">
+      <fecha>
+        <dia>02</dia>
+        <mes>03</mes>
+        <año>2017</año>
+      </fecha>
+      <persona>
+        <nombre>Marta</nombre>
+        <apellido1>Lopez</apellido1>
+        <apellido2>Sans</apellido2>
+      </persona>
+    </soporte_regalado>
+    <cotenido_video>
+      <año>1983</año>
+      <titulo>El Perro de los Baskerville</titulo>
+      <tipo_video>aventuras</tipo_video>
+      <director>
+        <nombre>Douglas</nombre>
+        <apellido1>Hickox</apellido1>
+      </director>
+      <actor>
+        <nombre>Ian</nombre>
+        <apellido1>Richardson</apellido1>
+      </actor>
+      <actriz>
+        <nombre>André</nombre>
+        <apellido1>Morell</apellido1>
+      </actriz>
+      <compositor>
+        <nombre>Michael J.</nombre>
+        <apellido1>Lewis</apellido1>
+      </compositor>
+      <guionista>
+        <nombre>Charles Edward</nombre>
+        <apellido1>Pogue</apellido1>
+      </guionista>
+      <productor>
+        <nombre>Eric</nombre>
+        <apellido1>Rattray</apellido1>
+      </productor>
+      <secundarios>
+        <secundario>
+          <nombre>Christopher</nombre>
+          <apellido1>Lee</apellido1>
+        </secundario>
+      </secundarios>
+      <localizaciones>
+        <localizacion>Londres</localizacion>
+      </localizaciones>
+      <idiomas>
+        <idioma original="si">Inglés</idioma>
+        <idioma original="no">Castellano</idioma>
+      </idiomas>
+    </cotenido_video>
+    <indice>M/VID/DVD/ORG/00002</indice>
+  </medio_video>
+  <medio_video formato="dvd">
+    <soporte_regalado version="original">
+      <fecha>
+        <dia>05</dia>
+        <mes>06</mes>
+        <año>2017</año>
+      </fecha>
+      <persona>
+        <nombre>Marta</nombre>
+        <apellido1>Gené</apellido1>
+        <apellido2>Riquelme</apellido2>
+      </persona>
+    </soporte_regalado>
+    <cotenido_video>
+      <año>1984</año>
+      <titulo>Los Cazafantasmas</titulo>
+      <tipo_video>fantasia</tipo_video>
+      <director>
+        <nombre>Ivan</nombre>
+        <apellido1>Reitman</apellido1>
+      </director>
+      <actor>
+        <nombre>Bill</nombre>
+        <apellido1>Murray</apellido1>
+      </actor>
+      <actriz>
+        <nombre>Sigourney</nombre>
+        <apellido1>Weaver</apellido1>
+      </actriz>
+      <compositor>
+        <nombre>Elmer</nombre>
+        <apellido1>Bernstein</apellido1>
+      </compositor>
+      <guionista>
+        <nombre>Dan</nombre>
+        <apellido1>Aykroyd</apellido1>
+      </guionista>
+      <productor>
+        <nombre>Ivan</nombre>
+        <apellido1>Reitman</apellido1>
+      </productor>
+      <secundarios>
+        <secundario>
+          <nombre>Harold</nombre>
+          <apellido1>Ramis</apellido1>
+        </secundario>
+      </secundarios>
+      <localizaciones>
+        <localizacion>Nova York</localizacion>
+      </localizaciones>
+      <idiomas>
+        <idioma original="si">Inglés</idioma>
+        <idioma original="no">Castellano</idioma>
+      </idiomas>
+    </cotenido_video>
+    <indice>M/VID/DVD/ORG/00003</indice>
+  </medio_video>
+  <medio_texto formato="libro">
+    <soporte_comprado version="original">
+      <fecha>
+        <dia>22</dia>
+        <mes>11</mes>
+        <año>2019</año>
+      </fecha>
+      <localidad>Lleida</localidad>
+      <centro>Llibreria Caselles</centro>
+      <precio>20</precio>
+    </soporte_comprado>
+    <contenido_texto>
+      <año>2017</año>
+      <titulo>Las Aventuras de Sherlock Holmes</titulo>
+      <editorial>Viena edicionns</editorial>
+      <edicion>1</edicion>
+      <ciudad>Barcelona</ciudad>
+      <contenido_libro>
+        <tipo_libro>novela</tipo_libro>
+        <coleccion numero="65">El Circulo de Viena</coleccion>
+        <idioma original="no">Catalán</idioma>
+        <traductor>
+          <nombre>Xavier</nombre>
+          <apellido1>Zambrano</apellido1>
+        </traductor>
+        <autores>
+          <autor>
+            <nombre>Arthur</nombre>
+            <apellido1>Conan</apellido1>
+            <apellido2>Doyle</apellido2>
+          </autor>
+        </autores>
+      </contenido_libro>
+    </contenido_texto>
+    <indice>M/TXT/LLB/ORG/00001</indice>
+  </medio_texto>
+  <medio_texto formato="libro">
+    <soporte_comprado version="original">
+      <fecha>
+        <dia>23</dia>
+        <mes>06</mes>
+        <año>2017</año>
+      </fecha>
+      <localidad>Lleida</localidad>
+      <centro>Abacus</centro>
+      <precio>10</precio>
+    </soporte_comprado>
+    <contenido_texto>
+      <año>1996</año>
+      <titulo>En la Cripta</titulo>
+      <editorial>Alianza</editorial>
+      <edicion>1</edicion>
+      <ciudad>Madrid</ciudad>
+      <contenido_libro>
+        <tipo_libro>conte</tipo_libro>
+        <coleccion numero="786">El Libro de Bolsillo</coleccion>
+        <idioma original="no">Castellano</idioma>
+        <traductor>
+          <nombre>Aurelio</nombre>
+          <apellido1>Martínez</apellido1>
+          <apellido2>Benito</apellido2>
+        </traductor>
+        <autores>
+          <autor>
+            <nombre>Howard Phillips</nombre>
+            <apellido1>Lovecraft</apellido1>
+          </autor>
+        </autores>
+      </contenido_libro>
+    </contenido_texto>
+    <indice>M/TXT/LLB/ORG/00002</indice>
+  </medio_texto>
+  <medio_texto formato="revista">
+    <soporte_comprado version="original">
+      <fecha>
+        <dia>22</dia>
+        <mes>11</mes>
+        <año>2018</año>
+      </fecha>
+      <localidad>Manresa</localidad>
+      <centro>Fira Mediterrania</centro>
+      <precio>20</precio>
+    </soporte_comprado>
+    <contenido_texto>
+      <año>2017</año>
+      <titulo>Caramella</titulo>
+      <editorial>Solc</editorial>
+      <edicion>1</edicion>
+      <ciudad>Manresa</ciudad>
+      <contenido_revista>
+        <tipo_revista>otros</tipo_revista>
+        <mes>03</mes>
+        <numero>20</numero>
+      </contenido_revista>
+    </contenido_texto>
+    <indice>M/TXT/RVT/ORG/00003</indice>
+  </medio_texto>
+  <medio_programa formato="dsk">
+    <soporte_copiado version="copia">
+      <fecha>
+        <dia>24</dia>
+        <mes>11</mes>
+        <año>1994</año>
+      </fecha>
+    </soporte_copiado>
+    <contenido_programa>
+      <año>1993</año>
+      <titulo>Doom</titulo>
+      <tipo_programa>videojuego</tipo_programa>
+      <empresa>ID Software</empresa>
+      <version>1.1</version>
+    </contenido_programa>
+    <indice>M/PRG/DSK/CPY/00001</indice>
+  </medio_programa>
+  <medio_programa formato="cdp">
+    <soporte_comprado version="original">
+      <fecha>
+        <dia>23</dia>
+        <mes>10</mes>
+        <año>2018</año>
+      </fecha>
+      <localidad>Lleida</localidad>
+      <centro>MediaMarkt</centro>
+      <precio>60</precio>
+    </soporte_comprado>
+    <contenido_programa>
+      <año>2018</año>
+      <titulo>Windows 10</titulo>
+      <tipo_programa>sistema operativo</tipo_programa>
+      <empresa>Microsoft</empresa>
+      <version>SP1</version>
+    </contenido_programa>
+    <indice>M/PRG/CDP/ORG/00002</indice>
+  </medio_programa>
+  <medio_programa formato="cdp">
+    <soporte_comprado version="original">
+      <fecha>
+        <dia>25</dia>
+        <mes>11</mes>
+        <año>2018</año>
+      </fecha>
+      <localidad>Lleida</localidad>
+      <centro>MediaMarkt</centro>
+      <precio>35</precio>
+    </soporte_comprado>
+    <contenido_programa>
+      <año>2013</año>
+      <titulo>Windows 7</titulo>
+      <tipo_programa>sistema operativo</tipo_programa>
+      <empresa>Microsoft</empresa>
+      <version>SP1</version>
+    </contenido_programa>
+    <indice>M/PRG/CDP/ORG/00003</indice>
+  </medio_programa>
+</medios>

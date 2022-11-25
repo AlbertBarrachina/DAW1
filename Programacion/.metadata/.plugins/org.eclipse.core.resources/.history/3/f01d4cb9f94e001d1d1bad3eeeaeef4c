@@ -1,0 +1,164 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Ejercicio_Arrays {
+
+	public static void main(String[] args) {
+		int ejercicio = 0;
+		int repetir = 0;
+		Scanner teclado = new Scanner(System.in);
+		// ints para todos los ejercicios
+		int i = 0;
+		int j = 0;
+		int n = 0;
+		int m = 0;
+		int x = 0;
+		int[] num = new int[100];
+		int[] numb = new int[100];
+		// int ejercicio 2
+		int tempmax = 0;
+		int tempmin = 100;
+		double tempmed = 0;
+		int tempper = 0;
+
+		while (repetir == 0) {
+			System.out.println("\n\n\n Que ejercicio quieres ejecutar? (1-11, -1 para salir)");
+			ejercicio = teclado.nextInt();
+
+			if (ejercicio == 1) {
+				// enunciado 1
+				i = 0;
+				x = 0;
+				System.out.println("Enunciado 1 (numeros aleatorios)\n\n\n");
+				System.out.println("Pon un numero del 0 al 100");
+				n = teclado.nextInt();
+				while (i < 100) {
+					num[i] = (int) (Math.random() * 101);
+					if (num[i] == n) {
+						x++;
+					}
+					System.out.print(num[i] + " ");
+					i++;
+				}
+				System.out.println("\n Has acertado " + x + " veces.");
+			} else if (ejercicio == 2) {
+				// enunciado 2
+				i = 0;
+				j = 0;
+				x = 0;
+				System.out.println("\n\n\n\n Enunciado 2 (temperaturas)\n\n\n");
+				System.out.println("Cuantos registros quieres poner?(max 100)");
+				while (x == 0) {
+					n = teclado.nextInt();
+					if (n > 0 && n < 101) {
+						System.out.println("Introducelos");
+						while (i < n) {
+							num[i] = teclado.nextInt();
+							if (num[i] > tempmax) {
+								tempmax = num[i];
+							}
+							if (num[i] < tempmin) {
+								tempmin = num[i];
+							}
+							tempmed = tempmed + num[i];
+							i++;
+						}
+						tempmed = tempmed / n;
+						while (j < n) {
+							if (num[j] >= tempmed) {
+								tempper++;
+							}
+							j++;
+						}
+						System.out.println("Temperatura maxima = " + tempmax + ".");
+						System.out.println("Temperatura minima = " + tempmin + ".");
+						System.out.println("Temperatura media aproximada = " + tempmed);
+						System.out.println(
+								"Porcentaje de temperaturas por encima de la media = " + tempper * (100 / n) + "%.");
+						x = 1;
+					} else {
+						System.out.println("Pon un numero correcto.");
+					}
+				}
+			} else if (ejercicio == 3) {
+				// enunciado 3
+				i = 0;
+				j = 0;
+				System.out.println("\n\n\n\n Enunciado 3 (invertir orden)\n\n\n");
+				while (j == 0) {
+					System.out.println("Cuantos numeros tendra el array?(max 100)");
+					n = teclado.nextInt();
+					m = n;
+					if (n > 0 && n < 101) {
+						System.out.println("Metodo 1 (1) o metodo 2 (2).");
+						x = teclado.nextInt();
+						if (x == 1) {
+							while (0 < n) {
+								// num[n-1] = (int) (Math.random() * 101);
+								num[n - 1] = i;
+								numb[i] = num[n - 1];
+								n--;
+								i++;
+							}
+							j = 1;
+						} else if (x == 2) {
+							while (0 < n) {
+								// num[n-1] = (int) (Math.random() * 101);
+								num[n - 1] = i;
+								numb[i] = num[n - 1];
+								n--;
+								i++;
+							}
+							j = 1;
+						} else {
+							System.err.println("Pon una opcion correcta");
+						}
+					} else {
+						System.err.println("Pon una opcion correcta");
+					}
+					i = 0;
+					// output del programa
+					if (x == 1 && n == 0) {
+						System.out.print("Array B : ");
+						while (i < m) {
+							System.out.print(numb[i] + " ");
+							i++;
+						}
+						j = 1;
+					} else if (x == 2 && n == 0) {
+						System.out.print("Array A : ");
+						while (i < m) {
+							System.out.print(num[i] + " ");
+							i++;
+						}
+						j = 1;
+					}
+				}
+			} else if (ejercicio == 4) {
+
+			} else if (ejercicio == 5) {
+
+			} else if (ejercicio == 6) {
+
+			} else if (ejercicio == 7) {
+
+			} else if (ejercicio == 8) {
+
+			} else if (ejercicio == 9) {
+
+			} else if (ejercicio == 10) {
+
+			} else if (ejercicio == 11) {
+
+			} else if (ejercicio == -1) {
+				repetir = 1;
+			} else {
+				System.out.println("Elije un numero \n\n");
+			}
+		}
+		System.out.println("Cerrando programa...");
+		System.out.println("\t ERROR!! \n PROGRAMA CERRADO CORRECTAMENTE :(");
+		teclado.close();
+	}
+
+}

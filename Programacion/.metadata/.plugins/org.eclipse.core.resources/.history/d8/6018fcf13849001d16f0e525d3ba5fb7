@@ -1,0 +1,69 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class loteria {
+
+	public static void main(String[] args) {
+		// var
+		Scanner teclado = new Scanner(System.in);
+		int j = 0;// veces numero acertado
+		int i = 0;// posicion en el array
+		int n = 0;// variable para comproba si los numeros son correctos
+		int temp = 0;// variables para ordenar array
+		int x = 0;
+		int[] numeros = new int[6]; // array de numeros del jugador
+		int[] ganador = new int[6]; // array de numeros ganadores
+		// input
+		System.out.println("Elige 6 numeros entre el 1 y el 49.");
+
+		while (i < numeros.length) // input de los arrays desde la posicion 0 a la 5
+		{
+			System.out.println("Elige el numero " + (i + 1));
+			ganador[i] = (int) (Math.random() * 49 + 1);
+			numeros[i] = teclado.nextInt();
+
+			if (numeros[i] >= 1 && numeros[i] <= 49) {
+				i++;
+			}
+		}
+		while (x < ganador.length) {
+			if (ganador[x] < ganador[x +1]) {
+				temp = ganador[x + 1];
+				ganador[x + 1] = ganador[x];
+				ganador[x] = temp;
+				System.out.println(ganador);
+			}
+			x++;
+		}
+
+		Arrays.sort(ganador);
+		// output
+		System.out.println("Numeros elejidos :" + numeros[0] + " " + numeros[1] + " " + numeros[2] + " " + numeros[3]
+				+ " " + numeros[4] + " " + numeros[5]);
+
+		System.out.println("Numeros ganadores :" + ganador[0] + " " + ganador[1] + " " + ganador[2] + " " + ganador[3]
+				+ " " + ganador[4] + " " + ganador[5]);
+
+		while (n < numeros.length) {
+			if (numeros[n] == ganador[0]) {
+				j++;
+			} else if (numeros[n] == ganador[1]) {
+				j++;
+			} else if (numeros[n] == ganador[2]) {
+				j++;
+			} else if (numeros[n] == ganador[3]) {
+				j++;
+			} else if (numeros[n] == ganador[4]) {
+				j++;
+			} else if (numeros[n] == ganador[5]) {
+				j++;
+			}
+			n++;
+		}
+
+		System.out.println("Has acertado " + j + " numeros.");
+
+		System.out.println("Quieres probar otra ves? (S/N)");
+
+	}
+}

@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class tic_tac_toe {
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		int[][] tb = new int[3][3];
+		int t = 0;
+
+		for (t = 0; t < 3; t++) {
+			System.out.println(tb[t][0] + " | " + tb[t][1] + " | " + tb[t][2]);
+			if (t < 2)
+				System.out.println("--+---+---");
+		}
+		System.out.println("¿Que modo de juego queires jugar?\nUn solo jugador(1).\nDos jugadores(2).");
+		if (tb[0][0] == 1 && tb[0][1] == 1 && tb[0][2] == 1) {
+			System.out.println("El jugador 1 ha ganado");
+		}
+		for (t = 0; t < 3; t++) {
+			System.out.println(tb[t][0] + " | " + tb[t][1] + " | " + tb[t][2]);
+			if (t < 2)
+				System.out.println("--+---+---");
+		}
+		teclado.close();
+	}
+
+}

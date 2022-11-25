@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class datos_personales {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String datos;
+		String[] nombres;
+		String apellido1;
+		String apellido2;
+		int cons = 0;
+
+		System.out.println("Introduce tu nombre y tus apellidos");
+		datos = teclado.nextLine();
+		// comprueva cuantas consonates hay
+		for (int i = 0; i < (datos.length()); i++) {
+			if (datos.substring(i, i + 1).equals("a") || datos.substring(i, i + 1).equals("A")
+					|| datos.substring(i, i + 1).equals("e") || datos.substring(i, i + 1).equals("E")
+					|| datos.substring(i, i + 1).equals("i") || datos.substring(i, i + 1).equals("I")
+					|| datos.substring(i, i + 1).equals("o") || datos.substring(i, i + 1).equals("O")
+					|| datos.substring(i, i + 1).equals("u") || datos.substring(i, i + 1).equals("U")
+					|| datos.substring(i, i + 1).equals(" ")) {
+				cons++;
+			}
+		}
+		cons = datos.length() - cons;
+		// muestra el numero de consonates
+		System.out.println("Hay " + cons + " consonantes.");
+		// divide las palabras a cada espacio que haya
+		nombres = datos.split(" ");
+		apellido1 = nombres[1];
+		apellido2 = nombres[2];
+		if ((apellido1.length() / apellido2.length()) != 0)
+			System.out.println("Apellidos matemáticos!!!");
+		else
+			System.out.println("Apellidos NO matemáticos");
+		if (apellido1.substring(0, 0).equals(apellido1.substring(apellido1.length(), apellido1.length()))&&apellido2.substring(0, 0).equals(apellido1.substring(apellido1.length(), apellido1.length()))) {
+			System.out.println("Eres una persona KANIGU!");
+		}
+
+		teclado.close();
+	}
+}

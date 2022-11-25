@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+public class nacionalidades {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String str = "";
+		int n = 1;
+		int nacion = 0;
+		int repe = 0;
+
+		System.out.println("¿Cuantos nombres quieres insertar?");
+
+		n = teclado.nextInt();
+		teclado.nextLine();
+		if (n > 25) {
+			n = 25;
+			System.out.println("¿Querias decir 25?");
+		} else if (n < 1) {
+			n = 1;
+			System.out.println("¿Querias decir 0?");
+		}
+		for (int i = 0; i < n; i++) {
+			repe = 0;
+			System.out.println("Nombre " + (i + 1) + " de " + n + "\nEntra el nombre:");
+			str = teclado.nextLine();
+			if (str.length() <= 50) {
+				str = str.toUpperCase();
+				if (str.substring(str.length() - 2, str.length()).equals("IX")) {
+					nacion = 1;
+					repe++;
+				} else if (str.substring(str.length() - 2, str.length()).equals("US")
+						|| (str.substring(str.length() - 2, str.length()).equals("UM"))) {
+					nacion = 2;
+					repe++;
+				} else if (str.substring(str.length() - 2, str.length()).equals("AF")) {
+					nacion = 3;
+					repe++;
+				} else if (str.substring(str.length() - 2, str.length()).equals("IS")
+						|| str.substring(str.length() - 2, str.length()).equals("OS")
+						|| str.substring(str.length() - 2, str.length()).equals("AX")) {
+					nacion = 4;
+					repe++;
+				} else if (str.substring(str.length() - 2, str.length()).equals("EZ")) {
+					nacion = 5;
+					repe++;
+				} else if (str.substring(str.length() - 1, str.length()).equals("A")) {
+					nacion = 6;
+					repe++;
+				}
+				if (str.substring(0, 3).equals("MAC")) {
+					nacion = 7;
+					repe++;
+				} else if (str.substring(0, 3).equals("PRO")) {
+					nacion = 8;
+					repe++;
+				}
+				System.out.println("Nacionalidad: ");
+				if (repe > 1) {
+					System.out.print("TERRAQUIS");
+				} else if (nacion == 1) {
+					System.out.print("GALO");
+				} else if (nacion == 2) {
+					System.out.print("ROMANO");
+				} else if (nacion == 3) {
+					System.out.print("NORMANDO");
+				} else if (nacion == 4) {
+					System.out.print("BRETON");
+				} else if (nacion == 5) {
+					System.out.print("HISPANO");
+				} else if (nacion == 6) {
+					System.out.print("INDIO");
+				} else if (nacion == 7) {
+					System.out.print("PICTO");
+				} else if (nacion == 8) {
+					System.out.print("ILERNO");
+				} else
+					System.out.print("ESTRATERRAQUIS");
+				System.out.println("\n\n\n\n");
+			}else
+			System.out.println("Pon un nombre valido.");
+			i--;
+		}
+		System.out.println("Final del programa.");
+		teclado.close();
+	}
+}

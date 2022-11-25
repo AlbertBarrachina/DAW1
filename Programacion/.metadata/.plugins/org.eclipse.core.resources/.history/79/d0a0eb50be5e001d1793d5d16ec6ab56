@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class nacionalidades {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String nombre = "";
+		String inicio = "";
+		String final1 = "";
+		String final2 = "";
+		int n = 0;
+		int nacion = 0;
+		int repe = 0;
+
+		System.out.println("¿Cuantos nombres quieres insertar?");
+
+		n = teclado.nextInt();
+		teclado.nextLine();
+
+		System.out.println("Entra el nombre:");
+		nombre = teclado.nextLine();
+		inicio = nombre.substring(0, 3);
+		final1 = nombre.substring(nombre.length() - 1, nombre.length());
+		final2 = nombre.substring(nombre.length() - 2, nombre.length());
+		if (nombre.substring(nombre.length() - 2, nombre.length()).equals("IX")) {
+			nacion = 1;
+			repe++;
+		} else if (final2 == "US" || final2 == "UM") {
+			nacion = 2;
+			repe++;
+		} else if (final2 == "AF") {
+			nacion = 3;
+			repe++;
+		} else if (final2 == "IS" || final2 == "OS" || final2 == "AX") {
+			nacion = 14;
+			repe++;
+		} else if (final2 == "EZ") {
+			nacion = 1;
+			repe++;
+		} else if (final1 == "A") {
+			nacion = 1;
+			repe++;
+		}
+		System.out.println(nombre.substring(nombre.length() - 2, nombre.length()));
+		System.out.println(nacion);
+	}
+
+}

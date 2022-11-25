@@ -1,0 +1,25 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class juego {
+
+	public static void main(String[] args) {
+		// variables
+		int canicasj = 10;
+		boolean apuestaj = true;
+		int numj = 0;
+		int canicasm = 10;
+		Random apuestam = new Random();
+		int numm = 0;
+		Scanner teclado = new Scanner(System.in);
+		// input
+		apuestam.nextBoolean();
+		apuestaj = teclado.nextInt();
+		System.out.println(apuestam);
+
+		// operaciones
+		// output
+
+	}
+
+}

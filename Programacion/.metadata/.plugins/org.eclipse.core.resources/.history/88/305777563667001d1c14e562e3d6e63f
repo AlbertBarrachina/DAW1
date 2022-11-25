@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class buscaminas1 {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		int[][] tb = new int[10][10];
+		int[][] minas = new int[10][10];
+		int i = 0;
+		int j = 0;
+		
+		//genera las minas en un tablero a parte llamado "minas"
+		for (i = 0; i < 10; i++) {
+			for (j = 0; j < 10; j++) {
+				if ((int) (Math.random() * 10) == 6) {
+					minas[i][j] = 1;
+				}
+				//muestra el tablero "tb" al jugador
+		System.out.println("\n |---------------------------------------|");
+		for (i = 0; i < 10; i++) {
+			for (j = 0; j < 10; j++) {
+				System.out.print(" | " + tb[i][j]);
+			}
+			if (i < 9)
+				System.out.print(" | \n |---+---+---+---+---+---+---+---+---+---|\n");
+			else
+				System.out.print(" | \n |---------------------------------------| \n\n");
+		}
+
+		teclado.close();
+	}
+}

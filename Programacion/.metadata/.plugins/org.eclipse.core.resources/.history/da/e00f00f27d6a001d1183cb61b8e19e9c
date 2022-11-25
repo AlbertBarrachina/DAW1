@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class datos_personales {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String datos;
+		String temp;
+		String[] nombres;
+		int cons = 0;
+
+		System.out.println("Introduce tu nombre y tus apellidos");
+		datos = teclado.nextLine();
+		for (int i = 0; i < (datos.length()); i++) {
+			if (datos.substring(i, i + 1).equals("a") || datos.substring(i, i + 1).equals("A")
+					|| datos.substring(i, i + 1).equals("e") || datos.substring(i, i + 1).equals("E")
+					|| datos.substring(i, i + 1).equals("i") || datos.substring(i, i + 1).equals("I")
+					|| datos.substring(i, i + 1).equals("o") || datos.substring(i, i + 1).equals("O")
+					|| datos.substring(i, i + 1).equals("u") || datos.substring(i, i + 1).equals("U")) {
+				cons++;
+			}
+		}
+		cons = datos.length() - cons;
+		System.out.println(cons);
+		nombres = datos.split(" ");
+	}
+
+}

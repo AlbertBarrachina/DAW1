@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class pentavocalicas {
+
+	public static void main(String[] args) {
+		// variables
+		Scanner teclado = new Scanner(System.in);
+		String[] palabras;
+		int n = 0;
+		boolean a = false;
+		boolean e = false;
+		boolean i = false;
+		boolean o = false;
+		boolean u = false;
+		int veces = 0;
+
+		System.out.println("¿Cuantas palabras quieres introducir?");
+		veces = teclado.nextInt();
+		palabras = new String[veces];
+		System.out.println("Quedan " + veces + " nombres.");
+		for (int j = 0; j < veces; j++) {
+			palabras[j] = teclado.nextLine();
+			for (n = 0; n < palabras[j].length(); n++) {
+				if (palabras[j].substring(n, n).equals("a")) {
+					a = true;
+				}
+			}
+		}
+		if (a) {
+			System.out.println("puede ser");
+		}
+		teclado.close();
+	}
+
+}

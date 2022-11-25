@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+public class pentavocalicas {
+
+	public static void main(String[] args) {
+		// variables
+		Scanner teclado = new Scanner(System.in);
+		String palabra;
+		String respuestas = "";
+		boolean a = false;
+		boolean e = false;
+		boolean i = false;
+		boolean o = false;
+		boolean u = false;
+		int veces = 0;
+
+		System.out.println("¿Cuantas palabras quieres introducir?");
+		veces = teclado.nextInt();
+		teclado.nextLine();
+		System.out.println("Quedan " + veces + " nombres.");
+		for (int j = 0; j < veces; j++) {
+			a = false;
+			e = false;
+			i = false;
+			o = false;
+			u = false;
+			palabra = teclado.nextLine();
+			if (palabra.contains("ñ")) {
+				System.out.println("No se acepta la 'ñ'.");
+				j--;
+			} else {
+				if (palabra.length() < 30) {
+					if (palabra.toLowerCase().contains("a")) {
+						a = true;
+					}
+					if (palabra.toLowerCase().contains("e")) {
+						e = true;
+					}
+					if (palabra.toLowerCase().contains("i")) {
+						i = true;
+					}
+					if (palabra.toLowerCase().contains("o")) {
+						o = true;
+					}
+					if (palabra.toLowerCase().contains("u")) {
+						u = true;
+					}
+					if (a && e && i && o && u)
+						respuestas = respuestas + "\n SI";
+					else
+						respuestas = respuestas + "\n NO";
+				} else {
+					System.out.println("Introduce un nombre con un maximo de 30 caracteres.");
+					j--;
+				}
+			}
+		}
+		System.out.println(respuestas);
+		teclado.close();
+	}
+
+}

@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class nacionalidades {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String nombre;
+		int n =0;
+		int nacion = 0;
+		int repe = 0;
+		
+		System.out.println("¿Cuantos nombres quieres insertar?");
+
+		n = teclado.nextInt();
+		teclado.nextLine();
+		
+		System.out.println("Entra el nombre:");
+		nombre=teclado.nextLine();
+	}
+
+}

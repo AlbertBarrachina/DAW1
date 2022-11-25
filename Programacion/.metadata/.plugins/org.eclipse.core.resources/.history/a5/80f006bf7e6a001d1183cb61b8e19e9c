@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class datos_personales {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String datos;
+		String[] nombres;
+		int cons = 0;
+
+		System.out.println("Introduce tu nombre y tus apellidos");
+		datos = teclado.nextLine();
+		//comprueva cuantas consonates hay
+		for (int i = 0; i < (datos.length()); i++) {
+			if (datos.substring(i, i + 1).equals("a") || datos.substring(i, i + 1).equals("A")
+					|| datos.substring(i, i + 1).equals("e") || datos.substring(i, i + 1).equals("E")
+					|| datos.substring(i, i + 1).equals("i") || datos.substring(i, i + 1).equals("I")
+					|| datos.substring(i, i + 1).equals("o") || datos.substring(i, i + 1).equals("O")
+					|| datos.substring(i, i + 1).equals("u") || datos.substring(i, i + 1).equals("U")
+					|| datos.substring(i, i + 1).equals(" ")) {
+				cons++;
+			}
+		}
+		cons = datos.length() - cons;
+		//muestra el numero de consonates
+		System.out.println("Hat " + cons + "consonantes.");
+		//divide las palabras a cada espacio que haya
+		nombres = datos.split(" ");
+		if(nombres[1].length()/nombres[2].length()==0) 
+			System.out.println("Apellidos matematicos!");
+		else 
+			System.out.println("cagaste :v");
+	}
+
+}

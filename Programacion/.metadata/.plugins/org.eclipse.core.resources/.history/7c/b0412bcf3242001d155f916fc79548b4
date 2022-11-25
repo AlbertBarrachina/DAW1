@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class juego {
+
+	public static void main(String[] args) {
+		// variables
+		int canicasj = 10;
+		int apuestaj = 0;
+		boolean booleanj = true;
+		int numj = 0;
+		int canicasm = 10;
+		int apuestam = 0;
+		boolean booleanm = true;
+		int numm = 0;
+		Scanner teclado = new Scanner(System.in);
+		// input
+		do {
+			apuestam = (int) (Math.random() * 2);
+			apuestaj = teclado.nextInt();
+		} while (apuestaj == 1 || apuestaj == 0);
+		{
+			System.out.println("pon uno valido");
+		}
+		// operaciones
+		// output
+	}
+
+}

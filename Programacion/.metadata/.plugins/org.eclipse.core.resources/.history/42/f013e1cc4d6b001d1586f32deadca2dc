@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class pentavocalicas {
+
+	public static void main(String[] args) {
+		// variables
+		Scanner teclado = new Scanner(System.in);
+		String[] palabras;
+		String respuestas = "";
+		int n = 0;
+		boolean a = false;
+		boolean e = false;
+		boolean i = false;
+		boolean o = false;
+		boolean u = false;
+		int veces = 0;
+
+		System.out.println("¿Cuantas palabras quieres introducir?");
+		veces = teclado.nextInt();
+		palabras = new String[veces];
+		teclado.nextLine();
+		System.out.println("Quedan " + veces + " nombres.");
+		for (int j = 0; j < veces; j++) {
+			a = false;
+			e = false;
+			i = false;
+			o = false;
+			u = false;
+			palabras[j] = teclado.nextLine();
+			for (n = 0; n < palabras[j].length(); n++) {
+				if (palabras[j].substring(n, n + 1).equals("a")) {
+					a = true;
+				} else if (palabras[j].substring(n, n + 1).equals("e")) {
+					e = true;
+				} else if (palabras[j].substring(n, n + 1).equals("i")) {
+					i = true;
+				} else if (palabras[j].substring(n, n + 1).equals("o")) {
+					o = true;
+				} else if (palabras[j].substring(n, n + 1).equals("u")) {
+					u = true;
+				}
+			}
+			if (a && e && i && o && u)
+				respuestas = respuestas + "\n SI";
+			else
+				respuestas = respuestas + "\n NO";
+		}
+		System.out.println(respuestas);
+		teclado.close();
+	}
+
+}

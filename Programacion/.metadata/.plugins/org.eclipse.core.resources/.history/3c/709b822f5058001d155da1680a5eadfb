@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class ciudades_de_Silco {
+
+	public static void main(String[] args) {
+		int x = 0;
+		String original;
+		String ciudad;
+		String[] temp;
+		String[] numstxt;
+		String[] ciudades;
+		int[] nums = new int[3];
+		Scanner teclado = new Scanner(System.in);
+		while (x == 0) {
+			System.out.println(
+					"Introduce los datos con este formato\nCiudad;Numero;Numero,Numero;Ciudad,Ciudad,Ciudad,Ciudad");
+			original = teclado.nextLine();
+			temp = original.split(";");
+			if (temp.length == 4) {
+				ciudad = temp[0];
+				nums[0] = Integer.parseInt(temp[1]);
+				numstxt = temp[2].split(",");
+				nums[1] = Integer.parseInt(numstxt[0]);
+				nums[2] = Integer.parseInt(numstxt[1]);
+				ciudades = temp[3].split(",");
+				System.out.println("Silco actúa en " + ciudad + "con los números " + nums[0] + ", " + nums[1] + " y "
+						+ nums[2] + ", y cuyas ciudades colindantes son " + ciudades[0] + ", " + ciudades[1] + ", "
+						+ ciudades[2] + " y " + ciudades[3]);
+			} else {
+				System.out.println("Pon el formato correcto:\nTexto;Numero;Numero,numero;ciudad,ciudad,ciudad,ciudad");
+			}
+
+		}
+	}
+}

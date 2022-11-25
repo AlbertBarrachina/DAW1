@@ -1,0 +1,17 @@
+import java.util.Scanner;
+public class juego_chinos {
+
+	public static void main(String[] args) {
+		// variables
+		int piedraj = 3;
+		int apuestaj = 0;
+		int piedram = 3;
+		int apuestam = 0;
+		Scanner teclado = new Scanner(System.in);
+		// input
+		// operaciones
+		// output
+
+	}
+
+}
