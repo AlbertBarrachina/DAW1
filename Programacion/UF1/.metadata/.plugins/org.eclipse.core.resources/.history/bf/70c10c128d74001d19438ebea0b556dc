@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class act2 {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String s1 = "";
+		String s2 = "";
+		
+		System.out.println("Pon el primer texto");
+		s1 = teclado.nextLine();
+		System.out.println("Pon el segundo texto");
+		s2 = teclado.nextLine();
+		
+		System.out.println(comparar(s1,s2));
+		
+		Static void comparar(char  a[],char  b[]) {
+			
+		}
+		
+		teclado.close();
+	}
+
+}

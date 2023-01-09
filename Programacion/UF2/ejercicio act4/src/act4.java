@@ -1,0 +1,180 @@
+import java.util.Scanner;
+
+public class act4 {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		int[] caballos = new int[50];
+		int opcion = 0;
+		int numcab = 0;
+		int maxcab = 0;
+		int j = 0;
+		int i = 0;
+		for (i = 0; i < 1;) {
+
+			System.out.println(
+					"Opción1. Entrar caballos.\nOpción2. Maximo caballos.\nOpción3. Ordenar\nOpción4. Numeros primos.\nOpción5. Terminar programa.");
+			opcion = teclado.nextInt();
+			if (opcion == 1) {
+				// El usuario introduce los caballos
+				numcab = opcion1(caballos);
+			} else if (opcion == 2) {
+				// muestra el numero mayor
+				maxcab = opcion2(caballos);
+				System.out.println("\n\nEl maximo de caballos es : " + maxcab + "\n\n");
+			} else if (opcion == 3) {
+				// ordena la array
+				for (int n = 0; n < 1;) {
+					System.out.println("0--> Orden descendente.\n1--> Orden ascendente.");
+					j = teclado.nextInt();
+					if (j == 0) {
+						// orden descendente
+						opcion3_1(caballos, numcab);
+						for (int m = 0; m < numcab; m++) {
+							System.out.print(caballos[m] + "  ");
+						}
+						System.out.println("\n");
+						n = 1;
+					} else if (j == 1) {
+						// orden ascendente
+						opcion3_2(caballos, numcab);
+						for (int m = 0; m < numcab; m++) {
+							System.out.print(caballos[m] + "  ");
+						}
+						System.out.println("\n");
+						n = 1;
+					} else
+						System.out.println("Pon un numero correcto.");
+				}
+			} else if (opcion == 4) {
+				// muetra cuantos numeros primos hay y cuales son
+				opcion4(caballos, numcab);
+			} else if (opcion == 5) {
+				i++;
+			}
+		}
+		teclado.close();
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función:opcion1
+	// ** Explicación del que hace la función: pide que introduzcas los caballos
+	// ** Parámetros de entrada: int[]
+	// ** Parámetros de salida: int
+	// ************************************************************************************
+	static int opcion1(int[] caballos) {
+		Scanner teclado = new Scanner(System.in);
+		int x = 0;
+		int i = 0;
+		// el usuario introduce los diferentes caballos de cada coche
+		for (i = 0; i < 50;) {
+			System.out.println("Introduce los caballos del coche " + i);
+			caballos[i] = teclado.nextInt();
+			if (caballos[i] == -2) {
+				i = 50;
+			} else if (caballos[i] > 0 && caballos[i] <= 1000) {
+				i++;
+				x++;
+			} else {
+				System.out.println("¡Numero incorrecto, introduc un numero valido! (1-1000)");
+			}
+		}
+		return x;
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función:opcion2
+	// ** Explicación del que hace la función: devuelve el numero mas grande de
+	// caballos
+	// ** Parámetros de entrada: int[]
+	// ** Parámetros de salida: int
+	// ************************************************************************************
+	static int opcion2(int[] caballos) {
+		int x = 0;
+		// encuantra el numero mayor
+		for (int i = 0; i < 50; i++) {
+			if (caballos[i] > x) {
+				x = caballos[i];
+			}
+		}
+		return x;
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función:opcion3_1
+	// ** Explicación del que hace la función: ordena en orden descendente
+	// ** Parámetros de entrada: int[], int
+	// ** Parámetros de salida: void
+	// ************************************************************************************
+	static void opcion3_1(int[] caballos, int numcab) {
+		int temp = 0;
+		// ordena los numero de forma descendente
+		for (int j = 0; j < numcab; j++) {
+			for (int i = 0; i < numcab; i++) {
+				if (caballos[i] < caballos[j]) {
+					temp = caballos[j];
+					caballos[j] = caballos[i];
+					caballos[i] = temp;
+				}
+			}
+		}
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función:opcion3_2
+	// ** Explicación del que hace la función: ordena en orden ascendente
+	// ** Parámetros de entrada: int[], int
+	// ** Parámetros de salida: void
+	// ************************************************************************************
+	static void opcion3_2(int[] caballos, int numcab) {
+		int temp = 0;
+		// ordena los numero de forma ascendente
+		for (int j = 0; j < numcab; j++) {
+			for (int i = 0; i < numcab; i++) {
+				if (caballos[i] > caballos[j]) {
+					temp = caballos[j];
+					caballos[j] = caballos[i];
+					caballos[i] = temp;
+				}
+			}
+		}
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función:
+	// ** Explicación del que hace la función: muestra los numeros primos y cuantas
+	// veces salen
+	// ** Parámetros de entrada: int[],int
+	// ** Parámetros de salida: void
+	// ************************************************************************************
+	static void opcion4(int[] caballos, int numcab) {
+		int[] primos = new int[numcab];
+		int x = 0;
+		int i = 0;
+		int contador = 0;
+		// for principal que compruebar cada numero
+		for (int n = 0; n < numcab; n++) {
+			x = 0;
+			// comprueba si es primo
+			for (int k = 2; k < caballos[n]; k++) {
+				if (caballos[n] % k == 0) {
+					k = caballos[n];
+					x = 0;
+				} else
+					x = 1;
+			}
+			// guarda el resultado en la matriz de primos
+			if (x == 1) {
+				contador++;
+				primos[i] = caballos[n];
+				i++;
+			}
+		}
+		// imprime los resultados
+		System.out.println("Hay " + contador + " numeros primos.");
+		for (x = 0; x < contador; x++) {
+			System.out.println(primos[x]);
+		}
+
+	}
+}

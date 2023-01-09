@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class act3 {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String frase = "";
+		int[] valores = new int[6];
+		int x = 0;
+
+		System.out.println("Introduce la frase");
+		frase = teclado.nextLine();
+		valores = respuesta(frase);
+		for (x = 0; x < valores.length; x++)
+			System.out.println(valores[x]);
+		teclado.close();
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función: respuesta
+	// ** Explicación del que hace la función: comprueba lo pedido?
+	// ** Parámetros de entrada: string
+	// ** Parámetros de salida: int[]
+	// ************************************************************************************
+	static int[] respuesta(String frase) {
+		String vocales = "aeiouAEIOUàáèéìíòóùúäëïöüÀÁÈÉÌÍÒÓÙÚÄËÏÖÜ";
+		int[] respuesta = new int[6];
+		frase = frase.replaceAll("  +", " ");
+		char[] texto = frase.toCharArray();
+
+		System.out.println(texto);
+		// longitud de la cadena (posicion 0)
+		respuesta[0] = texto.length;
+		for (int n = 0; n < texto.length; n++) {
+			//
+			if (texto[n] >= 65 && texto[n] <= 90 || texto[n] >= 97 && texto[n] <= 122
+					|| texto[n] >= 192 && texto[n] <= 220 || texto[n] >= 224 && texto[n] <= 255)
+				for (int i = 0; i < vocales.length(); i++) {
+					if (texto[n] == vocales.charAt(i)) {
+						respuesta[1]++;
+						i = vocales.length();
+					} else {
+						respuesta[2]++;
+					}
+				}
+
+		}
+		return respuesta;
+	}
+
+}

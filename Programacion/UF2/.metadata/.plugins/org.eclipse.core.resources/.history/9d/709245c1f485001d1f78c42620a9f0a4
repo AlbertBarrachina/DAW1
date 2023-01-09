@@ -1,0 +1,39 @@
+package memory;
+
+import java.util.Scanner;
+
+public class memory {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String letras = "AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZaabbccddeeff";
+		char[][] matriz = new char[8][8];
+		char[] letra = letras.toCharArray();
+		int dificultad = 6;
+		int aux = 0;
+
+		MezclarString(letra, dificultad);
+		for (int i = 0; i < dificultad; i++) {
+			for (int j = 0; j < dificultad; j++) {
+				matriz[i][j] = letra[aux];
+				aux++;
+				System.out.print(matriz[i][j] + " ");
+			}
+			System.out.println();
+		}
+
+		teclado.close();
+	}
+
+	static void MezclarString(char[] letra, int longitud) {
+		char temp = 0;
+		int x = 0;
+		longitud = (longitud * longitud);
+		for (int i = 0; i < longitud; i++) {
+			x = (int) (Math.random() * longitud);
+			temp = letra[x];
+			letra[x] = letra[i];
+			letra[i] = temp;
+		}
+	}
+}

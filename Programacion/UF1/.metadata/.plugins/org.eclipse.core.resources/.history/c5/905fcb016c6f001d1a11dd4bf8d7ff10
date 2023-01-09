@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class ventas {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String[] dias = { "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO", "DOMINGo" };
+		String respuesta;
+		Double dinero = 0.00;
+		Double maxBal = 0.00;
+		Double minBal = 0.00;
+		int i = 0;
+		int dia1 = 0;
+		int dia2 =0;
+
+		dinero = teclado.nextDouble();
+		if (dinero > maxBal) {
+			maxBal = dinero;
+			dia1 = i;
+		} else if (dinero < minBal) {
+			minBal = dinero;
+		}
+
+		System.out.println(dias[0] + "" + maxBal + " " + minBal);
+		teclado.close();
+	}
+
+}

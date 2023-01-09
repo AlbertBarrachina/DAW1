@@ -1,0 +1,178 @@
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Prova2_funcions {
+
+	public static void main(String[] args) {
+// Scanner y random
+		Scanner scan = new Scanner(System.in);
+		Random rand = new Random();
+// Arrays
+		int num[] = new int[10];
+		int mat3[][] = new int[2][5];
+// Variables
+		int numGen = 0;
+		int x = 0;
+		int numGrande = 0;
+		boolean seguir = true;
+		int opcion = 0;
+		while (seguir == true) {
+// Se muestra el menu
+			menu();
+// Se pide un numero al usuario
+			opcion = scan.nextInt();
+// Si el numero no está en el rango, se descarta y vuelve a saltar el menu
+			if (opcion != 1 && opcion != 2 && opcion != 3 && opcion != 9) {
+				System.out.println("ERROR: El numero está fuera del rango");
+			}
+			if (opcion == 1) {
+				opcion1(num);
+// Se muestra el resultado
+				System.out.println(Arrays.toString(num));
+			} else if (opcion == 2) {
+				numGrande = maxim_vector(num);
+				x = 0;
+// Se cuenta las repeticiones del numero más grande
+//				for (int i = 0; i < num.length; i++) {
+//					if (numGrande == num[i]) {
+//// Si coincide, se suma por 1 al contador
+//						x++;
+//					}
+//				}
+//// Se muestra el resultado
+//				System.out.println("El numero más grande es: " + numGrande + " y se repite " + x + " veces.");
+			} else if (opcion == 3) {
+				opcion3(num, mat3);
+				mostrar_matriu(mat3);
+
+// Printa la matriz mat3
+//				for (int i = 0; i < 2; i++) {
+//					for (int k = 0; k < 5; k++) {
+//						System.out.print(mat3[i][k] + "\t");
+//					}
+//					System.out.println("");
+//				}
+			} else if (opcion == 9) {
+// Si eligen la opción 9, se finaliza el programa
+				seguir = false;
+			}
+		}
+// FIN DEL PROGRAMA
+		scan.close();
+		System.out.println("FIN DEL PROGRAMA");
+	}
+
+//************************************************************************************
+//** Nombre de la función: menu()
+//** Explicación del que hace la función: mostra les opcions del menu per pantalla
+//** Parámetros de entrada: void
+//** Parámetros de salida: void
+//************************************************************************************	
+	static void menu() {
+		System.out.println("-------------------------------------------------------");
+		System.out.println("MENU");
+		System.out.println("1 - Generar array de 10 numeros aleatorios");
+		System.out.println("2 - Mostrar el numero más grande y repeticiones");
+		System.out.println("3 - Guardar la array en una matriz 2x5");
+		System.out.println("9 - Salir del programa");
+	}
+
+//************************************************************************************
+//** Nombre de la función: opcion1
+//** Explicación del que hace la función: ompla un array de 10 enterns imparells en 1 i 31
+//** Parámetros de entrada: int []
+//** Parámetros de salida: void
+//************************************************************************************
+	static void opcion1(int numbers[]) {
+		int x, numGen;
+		Random rand = new Random();
+		x = 0;
+		while (x < numbers.length) {
+//Numeros generados del 1 al 31
+			numGen = (rand.nextInt(31) + 1);
+//Si el numero es impar
+			if (numGen % 2 == 1) {
+//Se guarda el numero
+				numbers[x] = numGen;
+				x++;
+			}
+		}
+
+	}
+
+//************************************************************************************
+//** Nombre de la función:
+//** Explicación del que hace la función:
+//** Parámetros de entrada:
+//** Parámetros de salida:
+//************************************************************************************
+	static void opcion3(int numbers[], int mat[][]) {
+		int x = 0;
+		/*
+		 * Guarda en la matriz mat3 los numeros generados por la array num
+		 */
+		for (int i = 0; i < 2; i++) {
+			for (int k = 0; k < 5; k++) {
+				mat[i][k] = numbers[x];
+				x++;
+			}
+		}
+
+	}
+
+//************************************************************************************
+//** Nombre de la función: maxim_vector
+//** Explicación del que hace la función: retorna el valor maxim d'un vector de ints
+//** Parámetros de entrada: int [] 
+//** Parámetros de salida: int
+//************************************************************************************
+	static int maxim_vector(int numbers[]) {
+		int max;
+		max = 0;
+
+//Se compara todos los numeros de la array
+		for (int i = 0; i < numbers.length; i++) {
+//Si un numero es más grande
+			if (max < numbers[i]) {
+//Se le asigna a la variable
+				max = numbers[i];
+			}
+		}
+		return max;
+
+	}
+
+//************************************************************************************
+//** Nombre de la función: mostrar_matriu
+//** Explicación del que hace la función: mostra per pantalla la matriu
+//** Parámetros de entrada: int [] []
+//** Parámetros de salida: void
+//************************************************************************************
+	static void mostrar_matriu(int[][] matriu) {
+		for (int i = 0; i < 2; i++) {
+			for (int k = 0; k < 5; k++) {
+				System.out.print(matriu[i][k] + "\t");
+			}
+			System.out.println("");
+		}
+	}
+
+//************************************************************************************
+//** Nombre de la función: calculo_repeticion_maximo
+//** Explicación del que hace la función: retorna la quantitat de vegades que es repeteix el maxim 
+//**      disn del vector
+//** Parámetros de entrada: int [] 
+//** Parámetros de salida: int
+//************************************************************************************
+	static void mostrar_matriu(int Grande, int num) {
+		for (int i = 0; i < num.length; i++) {
+			if (Grande == num[i]) {
+//Si coincide, se suma por 1 al contador
+				x++;
+			}
+		}
+//Se muestra el resultado
+		System.out.println("El numero más grande es: " + numGrande + " y se repite " + x + " veces.");
+	}
+}

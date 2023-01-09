@@ -1,0 +1,12 @@
+import java.util.Scanner;
+
+public class act4 {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+
+		System.out.println("Opción1. \nOpción2. \nOpción3. \nOpción4. \nOpción5.");
+		teclado.close();
+	}
+
+}

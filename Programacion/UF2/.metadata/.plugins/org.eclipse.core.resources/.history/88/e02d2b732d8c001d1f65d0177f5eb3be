@@ -1,0 +1,165 @@
+package memory;
+
+import java.util.Scanner;
+
+public class memory {
+
+	public static void main(String[] args) {
+		// variables
+		Scanner teclado = new Scanner(System.in);
+		String letras = "AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZaabbccddeeff";
+		char[][] respuesta = new char[8][8];
+		char[][] matriz = new char[8][8];
+		char[] letra = letras.toCharArray();
+		int dificultad = 4;
+		int parejas = 0;
+		int aux = 0;
+		int fila1 = 0;
+		int fila2 = 0;
+		int columna1 = 0;
+		int columna2 = 0;
+		int ronda = 1;
+
+		// pregunta la difficultad para saber el tamaño de la matriz y cuantas parejas
+		// tendra
+		for (int i = 0; i < 1;) {
+			System.out.println("Selecciona la dificultad: \n 4: facil \n 6: normal \n 8: dificil");
+			dificultad = teclado.nextInt();
+			if (dificultad == 4 || dificultad == 6 || dificultad == 8)
+				i = 1;
+		}
+		// mezcla el array con la dificultad introducida previamente
+		MezclarCharArray(letra, dificultad);
+		// llena la matriz que vera el jugador de interogantes usando la dificultad para
+		// saber el tamaño de esta
+		for (int i = 0; i < dificultad; i++) {
+			for (int j = 0; j < dificultad; j++) {
+				respuesta[i][j] = letra[aux];
+				matriz[i][j] = '?';
+				aux++;
+			}
+		}
+		aux = 0;
+		for (int repetir = 0; repetir == 0;) {
+			if (aux == 0) {
+				// muestra la matriz del jugador
+				mostrar(matriz, dificultad);
+			}
+			System.out.println("Ronda " + ronda);
+			// pregunta por la fila 1 en la primera vuelta y por la fila 2 en la segunda
+			// vuelta
+			System.out.println("Fila " + (aux + 1) + ":");
+			fila1 = teclado.nextInt();
+			if (fila1 > 0 && fila1 <= dificultad) {
+				// pregunta por la columna 1 en la primera vuelta y por la columna 2 en la
+				// segunda vuelta
+				System.out.println("Columna " + (aux + 1) + ":");
+				columna1 = teclado.nextInt();
+				if (columna1 > 0 && columna1 <= dificultad) {
+					aux++;
+					// mueve los valores de la primera fila y columna a la segunda fila y columna
+					if (aux == 1) {
+						fila2 = fila1;
+						columna2 = columna1;
+						// comprueba si son iguales las letras en la tabla de resultados y las
+						// transfiere a la matriz del jugador
+					} else if (aux == 2) {
+						parejas = comparar(matriz, respuesta, fila1, fila2, columna1, columna2, parejas);
+						aux = 0;
+						// si las parejas no son iguales vuelve a introducir el interogante
+						if (matriz[fila1 - 1][columna1 - 1] != matriz[fila2 - 1][columna2 - 1]) {
+							mostrar(matriz, dificultad);
+							matriz[fila1 - 1][columna1 - 1] = '?';
+							matriz[fila2 - 1][columna2 - 1] = '?';
+							System.out.println("\n\n\n");
+						}
+						// comprueva si has ganado
+						repetir = victoria(parejas, dificultad);
+					}
+				} else
+					System.out.println("Introduce un numerocorrecto");
+			} else
+				System.out.println("Introduce un numerocorrecto");
+		}
+		teclado.close();
+
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función:MezclarCharArray
+	// ** Explicación del que hace la función: mezcla las letras de un char array
+	// ** Parámetros de entrada: char[](array con todas las parejas a
+	// mezclar),int(dificultad del juego de parejas)
+	// ** Parámetros de salida: void
+	// ************************************************************************************
+	static void MezclarCharArray(char[] letra, int longitud) {
+		char temp = 0;
+		int x = 0;
+		longitud = (longitud * longitud);
+		for (int i = 0; i < longitud; i++) {
+			x = (int) (Math.random() * longitud);
+			temp = letra[x];
+			letra[x] = letra[i];
+			letra[i] = temp;
+		}
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función:mostrar
+	// ** Explicación del que hace la función: muestra la tabla del jugador
+	// ** Parámetros de entrada: char[][](matriz del jugador),int(dificultad del
+	// juego)
+	// ** Parámetros de salida: void
+	// ************************************************************************************
+	static void mostrar(char[][] matriz, int dificultad) {
+		for (int i = 0; i < dificultad; i++) {
+			for (int j = 0; j < dificultad; j++) {
+				System.out.print(matriz[i][j] + "  ");
+			}
+			System.out.println();
+		}
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función:comparar
+	// ** Explicación del que hace la función: compara la posicion de las dos
+	// selecciones e introduce las letras que corespondan a la matriz.
+	// ** Parámetros de entrada: char[][](matriz del jugador),char[][](matriz de
+	// respuestas),int(fila1),int(fila2),int(columna1),int(columna2),int(contador de
+	// parejas resueltas)
+	// ** Parámetros de salida: int (devuelve el numero de parejas resueltas)
+	// ************************************************************************************
+	static int comparar(char[][] matriz, char[][] respuesta, int f1, int f2, int c1, int c2, int parejas) {
+		if (f1 == f2 && c1 == c2) {
+			System.out.println("Selecciona dos posiciones DIFERENTES.");
+		} else {
+			if (respuesta[f1 - 1][c1 - 1] == respuesta[f2 - 1][c2 - 1] && matriz[f1 - 1][c1 - 1] == '?'
+					&& matriz[f2 - 1][c2 - 1] == '?') {
+				parejas++;
+				System.out.println("¡Acierto!");
+			}
+			matriz[f1 - 1][c1 - 1] = respuesta[f1 - 1][c1 - 1];
+			matriz[f2 - 1][c2 - 1] = respuesta[f2 - 1][c2 - 1];
+		}
+		return parejas;
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función:victoria
+	// ** Explicación del que hace la función: comprueba si has completado el juego,
+	// si has ganado deuelve un valor para salir del bucle principal y con eso
+	// acabar el juego.
+	// ** Parámetros de entrada:int(numero de parejas acertadas),int (dificultad del
+	// juego)
+	// ** Parámetros de salida:int (valor que se usa en el for principal para seuir
+	// el juego)
+	// ************************************************************************************
+	static int victoria(int parejas, int dificultad) {
+		int victoria = 0;
+		if (parejas == dificultad * (dificultad / 2)) {
+			System.out.println("Has ganado!");
+			victoria = 1;
+		}
+		return victoria;
+	}
+}

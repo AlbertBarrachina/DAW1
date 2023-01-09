@@ -1,0 +1,12 @@
+import java.util.Scanner;
+
+public class ventas {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String[] dias = { "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO", "DOMINGo" };
+		System.out.println(dias[0]);
+		teclado.close();
+	}
+
+}

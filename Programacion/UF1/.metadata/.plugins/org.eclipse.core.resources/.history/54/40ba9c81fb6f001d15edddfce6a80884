@@ -1,0 +1,12 @@
+import java.util.Scanner;
+
+public class textos {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		int[] numeros = new int[3][3];
+		int[][] matnum= new int [3][3];
+
+	}
+
+}

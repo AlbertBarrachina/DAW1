@@ -1,0 +1,5 @@
+INDEX VERSION 1.131+E:\DAW1\Programacion\UF2\.metadata\.plugins\org.eclipse.jdt.core
+1530581740.index
+1865797976.index
+582404395.index
+113558702.index

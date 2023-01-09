@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class act3 {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String frase = "";
+		int[] valores = new int[6];
+		int x = 0;
+		System.out.println("Introduce la frase");
+		frase = teclado.nextLine();
+		frase = respuesta(frase);
+		System.out.println(frase);
+		teclado.close();
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función: respuesta
+	// ** Explicación del que hace la función: comprueba lo pedido?
+	// ** Parámetros de entrada: string
+	// ** Parámetros de salida: int[]
+	// ************************************************************************************
+	static String respuesta(String frase) {
+		String respuesta = "";
+		frase = frase.replaceAll("  +", " ");
+		char[] texto = frase.toCharArray();
+		System.out.println(texto);
+		respuesta = "546362";
+		return respuesta;
+	}
+
+}

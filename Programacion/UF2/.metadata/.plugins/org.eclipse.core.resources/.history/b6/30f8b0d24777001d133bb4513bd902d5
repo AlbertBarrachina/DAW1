@@ -1,0 +1,12 @@
+import java.util.Scanner;
+
+public class act4 {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+
+		System.out.println("Opción1. Entrar caballos.\nOpción2. Maximo caballos.\nOpción3. Ordenar\nOpción4. Numeros primos.\nOpción5. Terminar programa.");
+		teclado.close();
+	}
+
+}

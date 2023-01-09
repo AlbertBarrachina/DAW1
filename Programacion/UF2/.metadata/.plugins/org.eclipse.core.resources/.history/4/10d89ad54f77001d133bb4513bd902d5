@@ -1,0 +1,100 @@
+import java.util.Scanner;
+
+public class act4 {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		int[] caballos = new int[50];
+		int opcion = 0;
+		int numcab = 0;
+		int maxcab = 0;
+		int j = 0;
+		int i = 0;
+		for (i = 0; i < 1;) {
+
+			System.out.println(
+					"Opción1. Entrar caballos.\nOpción2. Maximo caballos.\nOpción3. Ordenar\nOpción4. Numeros primos.\nOpción5. Terminar programa.");
+			opcion = teclado.nextInt();
+			if (opcion == 1) {
+				numcab = opcion1(caballos);
+
+			} else if (opcion == 2) {
+				maxcab = opcion2(caballos);
+				System.out.println("\n\nEl maximo de caballos es : " + maxcab + "\n\n");
+			} else if (opcion == 3) {
+				for (j = 0; j < 3;) {
+					System.out.println("0--> Orden descendiente.\n1--> Orden ascendiente.");
+					j = teclado.nextInt();
+					if (j == 0) {
+						opcion3_1(caballos, numcab);
+						for (int n = 0; n < numcab; n++) {
+							System.out.print(caballos[n] + "  ");
+						}
+						j = 3;
+					} else if (j == 1) {
+
+						j = 3;
+					} else
+						System.out.println("Pon un numero correcto.");
+				}
+			} else if (opcion == 4) {
+
+			} else if (opcion == 5) {
+				i++;
+			}
+		}
+		teclado.close();
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función:
+	// ** Explicación del que hace la función: pide que introduzcas los caballos
+	// ** Parámetros de entrada: int[]
+	// ** Parámetros de salida: int
+	// ************************************************************************************
+	static int opcion1(int[] caballos) {
+		Scanner teclado = new Scanner(System.in);
+		int x = 0;
+		int i = 0;
+		for (i = 0; i < 50;) {
+			caballos[i] = teclado.nextInt();
+			if (caballos[i] == -2) {
+				i = 50;
+			} else if (caballos[i] > 0 && caballos[i] <= 1000) {
+				i++;
+				x++;
+			} else {
+				System.out.println("¡Numero incorrecto, introduc un numero valido! (1-1000)");
+			}
+		}
+		return x;
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función:opcion2
+	// ** Explicación del que hace la función: devuelve el numero mas grande de
+	// caballos
+	// ** Parámetros de entrada: int[]
+	// ** Parámetros de salida: int
+	// ************************************************************************************
+	static int opcion2(int[] caballos) {
+		int x = 0;
+		for (int i = 0; i < 50; i++) {
+			if (caballos[i] > x) {
+				x = caballos[i];
+			}
+		}
+		return x;
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función:opcion3.1
+	// ** Explicación del que hace la función: ordena en orden ascendiente
+	// ** Parámetros de entrada: int[], int
+	// ** Parámetros de salida: void
+	// ************************************************************************************
+	static void opcion3_1(int[] caballos, int numcab) {
+		int temp = 0;
+
+	}
+}

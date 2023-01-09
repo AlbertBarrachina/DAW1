@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+public class act3 {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String frase = "";
+		int[] valores = new int[6];
+
+		System.out.println("Introduce la frase");
+		frase = teclado.nextLine();
+		//funcion que resuelve el ejercicio
+		respuesta(frase);
+		System.out.println("La longitud de la cadena es: " + valores[0] + "\n Hay " + valores[1] + " vocales\n Hay "
+				+ valores[2] + " cononantes\n Hay " + valores[3] + " digitos\n Hay " + valores[4]
+				+ " signos de puntuación\n Hay " + valores[5] + " espacios en blanco");
+		teclado.close();
+	}
+
+	// ************************************************************************************
+	// ** Nombre de la función: respuesta
+	// ** Explicación del que hace la función: comprueba lo pedido?
+	// ** Parámetros de entrada: string
+	// ** Parámetros de salida: int[]
+	// ************************************************************************************
+	static int[] respuesta(String frase) {
+		String vocales = "aeiouAEIOUàáèéìíòóùúäëïöüÀÁÈÉÌÍÒÓÙÚÄËÏÖÜ";
+		int[] respuesta = new int[6];
+		frase = frase.replaceAll("  +", " ");
+		char[] texto = frase.toCharArray();
+		int i = 0;
+
+		System.out.println("\n\n");
+		System.out.println(texto);
+		// longitud de la cadena (posicion 0)
+		respuesta[0] = texto.length;
+		for (int n = 0; n < texto.length; n++) {
+			// comprueba espacios (posicion 5)
+			if (texto[n] == ' ') {
+				respuesta[5]++;
+			} else if (texto[n] != ' ') {
+				//comprueba vocales (posicion 1)
+				for (i = 0; i < vocales.length(); i++) {
+					if (texto[n] == vocales.charAt(i)) {
+						respuesta[1]++;
+						i = vocales.length();
+					}
+				}
+				//comprueb numeros (posicion 3)
+				if (texto[n] >= '0' && texto[n] <= '9') {
+					respuesta[3]++;
+					// comprueba si es un signo de puntuacuion(posicion 4)
+				} else if (texto[n] >= 33 && texto[n] <= 47 || texto[n] >= 58 && texto[n] <= 64
+						|| texto[n] >= 91 && texto[n] <= 96 || texto[n] >= 123 && texto[n] <= 126
+						|| texto[n] >= 161 && texto[n] <= 191) {
+					respuesta[4]++;
+					//comprueba si es consonante? (posicion 2)
+				} else
+					respuesta[2]++;
+			}
+		}
+		return respuesta;
+	}
+}

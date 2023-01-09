@@ -1,0 +1,95 @@
+package memory;
+
+import java.util.Scanner;
+
+public class memory {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String letras = "AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZaabbccddeeff";
+		char[][] respuesta = new char[8][8];
+		char[][] matriz = new char[8][8];
+		char[] letra = letras.toCharArray();
+		int dificultad = 4;
+		int parejas = 0;
+		int aux = 0;
+		int fila1 = 0;
+		int fila2 = 0;
+		int columna1 = 0;
+		int columna2 = 0;
+
+		for (int i = 0; i < 1;) {
+			System.out.println("Selecciona la dificultad: \n 4: facil \n 6: normal \n 8: dificil");
+			dificultad = teclado.nextInt();
+			if (dificultad == 4 || dificultad == 6 || dificultad == 8)
+				i = 1;
+		}
+
+		MezclarCharArray(letra, dificultad);
+		for (int i = 0; i < dificultad; i++) {
+			for (int j = 0; j < dificultad; j++) {
+				respuesta[i][j] = letra[aux];
+				matriz[i][j] = '?';
+				aux++;
+			}
+		}
+		aux = 0;
+		mostrar(matriz, dificultad);
+		for (int repetir = 0; repetir == 0;) {
+			System.out.println("Fila " + (aux + 1) + ":");
+			fila1 = teclado.nextInt();
+			if (fila1 > 0 && fila1 <= dificultad) {
+				System.out.println("Columna " + (aux + 1) + ":");
+				columna1 = teclado.nextInt();
+				if (columna1 > 0 && columna1 <= dificultad) {
+					aux++;
+					if (aux == 1) {
+						fila2 = fila1;
+						columna2 = columna1;
+					} else if (aux == 2) {
+						comparar(matriz, respuesta, fila1, fila2, columna1, columna2, parejas);
+						aux = 0;
+						mostrar(matriz, dificultad);
+						if (parejas == dificultad * (dificultad / 2)) {
+							System.out.println("Has ganado!");
+						}
+					}
+				} else
+					System.out.println("Introduce un numerocorrecto");
+			} else
+				System.out.println("Introduce un numerocorrecto");
+		}
+		teclado.close();
+	}
+
+	static void MezclarCharArray(char[] letra, int longitud) {
+		char temp = 0;
+		int x = 0;
+		longitud = (longitud * longitud);
+		for (int i = 0; i < longitud; i++) {
+			x = (int) (Math.random() * longitud);
+			temp = letra[x];
+			letra[x] = letra[i];
+			letra[i] = temp;
+		}
+	}
+
+	static void mostrar(char[][] matriz, int dificultad) {
+		for (int i = 0; i < dificultad; i++) {
+			for (int j = 0; j < dificultad; j++) {
+				System.out.print(matriz[i][j] + "  ");
+			}
+			System.out.println();
+		}
+	}
+
+	static void comparar(char[][] matriz, char[][] respuesta, int f1, int f2, int c1, int c2, int parejas) {
+		if (f1 == f2 && c1 == c2) {
+			System.out.println("Selecciona dos posiciones DIFERENTES.");
+		} else if (respuesta[f1 - 1][c1 - 1] == respuesta[f2 - 1][c2 - 1]) {
+			parejas++;
+			matriz[f1 - 1][c1 - 1] = respuesta[f1 - 1][c1 - 1];
+			matriz[f2 - 1][c2 - 1] = respuesta[f2 - 1][c2 - 1];
+		}
+	}
+}
